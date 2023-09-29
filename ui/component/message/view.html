@@ -1,0 +1,14 @@
+<div class="form-dialog {{active?'active':''}}">
+    <div class="form-dialog-header">
+        <div class="row">
+            <div class="col-1 col-sm-3">
+                <span class="fa fa-arrow-left pointer"></span>
+            </div>
+            <div class="col" ng-bind-html="data.header">
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+       <div ng-bind-html="data.body"></div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="itr-dialog-backdrop {{active?'active':''}}">
+    <div class="col-md-6 p-3 m-auto mb-2 bg-white border border-secondary rounded-bottom small-full-width">
+        
+        <form ng-submit="submit()">
+            <div class="mb-3" ng-if="data.bulanan==1">
+                <label>Bulan</label>
+                <select class="form-select" ng-model="data.bulan" ng-options="b.val as b.name for b in bulan"></select>  
+            </div>    
+            <div class="mb-3">
+                <label for="">Tahun</label>
+                <input type="text" class="form-control" ng-model="data.tahun">
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" ng-click="cancel()">
+                        <span class="fa fa-arrow-left"></span>Cancel
+                    </button>
+                </div>
+                <div class="col-6 text-end">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        <span class="fa fa-paper-plane"></span>Submit
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
