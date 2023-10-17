@@ -1,5 +1,5 @@
 <?php
-class TdGrup extends Model{
+class CcGrup extends Model{
     protected $alias='grup';
     protected $columns=array(
         'nama'=>'VARCHAR(24)',
@@ -20,6 +20,11 @@ class TdGrup extends Model{
             'id'=>3,
             'nama'=>'officer',
             'keterangan'=>'pelaksana perintah',
+        ),
+        array(
+            'id'=>4,
+            'nama'=>'user',
+            'keterangan'=>'pelapor atau pengguna',
         ),
     );
 }

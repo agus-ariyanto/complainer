@@ -1,171 +1,168 @@
 <?php
-class Login{
-    function __construct(){
-        global $prefix;
-        $a=ucfirst(strtolower($prefix)).'Auth';
-        $this->Model=new $a;
-        $this->Params=new Params;
-        $this->Data=array();
+
+class Login extends Base{
+
+     function __construct(){
+         parent::__construct();
+         $this->params=new Params;
+         $this->addModel('auth');
     }
 
-    protected function Ok(){
-        $token=$this->Data['token'];
-        unset($this->Data['pwd']);
-        unset($this->Data['token']);
-
-        $kode=empty($this->Data['unit_id'])||empty($this->Data['bidang_id'])||empty($this->Data['phone'])?0:1;
-        header('Content-Type: application/json');
-        echo json_encode(array(
-            'kode'=>$kode,
-            'user'=>$this->Data,
-            'token'=>$token,
-        ));
-        http_response_code(200);
+    //create token untuk auth
+    //isi data ldap_bind
+    // token jwt diganti pwd
+    protected function createToken($id){
+         global $jwt;
+         $username=$this->params->key('username');
+         $password=$this->params->key('password');
+         $data=array(
+             'id'=>$id,
+             'username'=>$username,
+            // 'password'=>$pwd,
+         );
+         $token=JWT::encode($data,$jwt['key'],$jwt['alg']);
+         //$pwd=sha1($pwd);
+         $this->auth->colVal('pwd',sha1($password));
+         $this->auth->colVal('token',$token);
+         $this->auth->save($id);
+         return $token;
     }
 
-    
-    protected function createToken(){
-        global $jwt;
-        unset($this->Data['pwd']);
-        unset($this->Data['token']);
-        $token=JWT::encode($this->Data,$jwt['key'],$jwt['alg']);
-        $this->Model->colVal('token',$token);
-        $this->Model->save($this->Data['id']);
-        $this->Data=$this->Model->select($this->Data['id']);
+    protected function local(){
+        $username=$this->params->key('username');
+        $password=$this->params->key('password');
+        $this->auth->andWhere('usr',$username);
+        $this->auth->andWhere('grup_id',10,'<');
+        $this->auth->limit(1);
+        $res=$this->auth->select();
+
+         if(count($res)>0){
+
+             $data=$res[0];
+             unset($data['token']);
+             unset($data['pwd']);
+
+             // email dan password ada di table lokal
+             if($res[0]['pwd']==sha1($password)){
+                 $token=empty($res[0]['token']) ? $this->createToken($res[0]['id']) : $res[0]['token'];
+                 return array(
+                     'success'=>1,
+                     'userdata'=>$data,
+                     'token'=>$token,
+                 );
+             }
+
+             // email ada tapi password salah
+             return array(
+                 'success'=>2,
+                 'userdata'=>$data,
+                 'token'=>0,
+             );
+         }
+
+         // email dan password tidak ada
+         return array(
+             'success'=>0,
+             'userdata'=>array(),
+             'token'=>0,
+         );
     }
 
-    protected function updateUser(){
-        $this->Model->colVal('usr',$this->Params->key('username'));
-        $this->Model->colVal('pwd',sha1($this->Params->key('password')));
-        $this->Model->save($this->Data['id']);
-        $this->Data=$this->Model->select($this->Data['id']);
-        return $this->Data;
-    }
-
-    function index(){
-        // kosong
-        if(empty($this->Params->key('username'))|| empty($this->Params->key('password'))) return  http_response_code(403);
-
-        // check database lokal
-        $local=$this->local();
-
-        // lokal nggak ada 
-        if($local==0){
-            echo json_encode(array(
-                'error'=>1,
-                'ermesg'=>'invalid username or password',
-            ));
-            http_response_code(200);
-            return ;
-        } 
-        // login oke
-        if($local==1)  return $this->Ok();
-
-   /*      $ldap=$this->ldap();
-
-        if($ldap){ 
-            $this->updateUser();
-            $this->createToken();
-            return $this->Ok();
-        } 
-    */
-        http_response_code(403);
-    }
-
-     protected function local(){
-        $this->Model->andWhere('usr',$this->Params->key('username'));
-        $this->Model->limit(1);
-        $res=$this->Model->select();
-        // echo $this->Model->testQry();
-        // tidak ada akun check LDAP
-        if(empty(count($res))) return 0;
-
-        $this->Data=$res[0];
-
-        $pwd=sha1($this->Params->key('password'));
-
-        if($this->Data['pwd']==$pwd){
-            // bikin token bila tak punya token
-            if(empty($this->Data['token']))  $this->createToken();
-            return 1;
-        }
-        // password tidak cocok, check LDAP
-        // return 2;
-        return 0;
-     }
 
 
-    // check username valid di LDAP
-/* 
     protected function ldap(){
         $ico='iconpln.co.id';
-        // $host='ldap://10.14.23.75:389';
-        $host='ldap://10.14.23.75';
-        $port='389';
-        $user=explode('@',$this->Params->key('username'))[0];
-        // $dn = 'DC=iconpln,DC=co,DC=id';
-        $dn = 'uid='.$user.'@'.$ico.',ou=people,dc=iconpln,dc=co,dc=id';
-        $pwd=$this->Params->key('password');
-        // $ldap=ldap_connect($host) or die('error');
-        $ldap=ldap_connect($host,$port) or die('error');
+        $host='ldap://10.14.23.75:389';
+        $dn = 'DC=iconpln,DC=co,DC=id';
+        $user=explode('@',$this->params->key('username'))[0];
+        $pwd=$this->params->key('password');
+        $ldap=ldap_connect($host) or die('error');
         if($ldap){
-            // echo 'connect';
-
-            ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL,7);
             ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
             ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
-            // $bind=ldap_bind($ldap,$dn,$pwd);
             $bind=ldap_bind($ldap,$user.'@'.$ico,$pwd);
             if($bind){
-                // echo 'binded';
                 ldap_unbind($ldap);
                 return true;
             }
         }
         return false;
-    }
- */
-    // otentifikasi header bearer
+      }
+
+
+      protected function createUser(){
+          $this->auth->colVal('usr',$this->params->key('username'));
+          $this->auth->colVal('pwd',sha1($this->params->key('password')));
+          $id=$this->auth->save();
+          $this->createToken($id);
+          return $this->auth->select($id);
+      }
+
+
+     function index(){
+         $local=$this->local();
+         if($local['success']==1) return $this->data($local);
+
+          $ldap=$this->ldap();
+          if($ldap){
+              if($local['success']==0){
+                  $data=$this->createUser();
+                  $token = $data['token'];
+                  unset($data['pwd']);
+                  unset($data['token']);
+                  return $this->data(array(
+                     'success' =>3,
+                     'userdata'=>$data,
+                     'token'=>$token,
+                  ));
+              }
+              $local['token']=$this->createToken($local['userdata']['id']);
+              return $this->data($local);
+          }
+          $this->data(array(
+            'success'=>0,
+            'userdata'=>array(),
+            'token'=>0,
+        ));
+     }
+
     function check(){
-        // return true;
+        $this->render(false);
+
         $header=getallheaders();
-        if(empty($header['Authorization'] || $header['authorization'])) {
-            http_response_code(403);
+        if(empty($header['Authorization'])){
+            $this->status(403);
             return false;
         }
+        $token=str_replace('Bearer ','',$header['Authorization']);
+        $this->auth->andWhere('token',trim($token));
+        $this->auth->limit(1);
+        $res=$this->auth->select();
 
-        if(empty($header['authorization'])){
-            $token=str_replace('Bearer ','',$header['Authorization']);
-        } else {
-            $token=str_replace('Bearer ','',$header['authorization']);
+        if(count($res)>0) {
+            $auth=$res[0];
+            unset($auth['pwd']);
+            unset($auth['token']);
+            return $auth;
         }
-
-        $this->Model->andWhere('token',trim($token));
-        $this->Model->limit(1);
-        $res=$this->Model->select();
-        if(empty(count($res))){
-            http_response_code(403);
-            return false;
-        }
-        return $res[0];
+        $this->status(403);
+        return false;
     }
-/*
+
     function ldaptest(){
-        $ico='iconpln.co.id';
-        $dn = 'DC=iconpln,DC=co,DC=id';
-        $user=explode('@',$this->Params->key('username'))[0];
-        $pwd=$this->Params->key('password');
-        
-        $ldap=ldap_connect('ldap://'.$ico.':389');
-         ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
-         ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
-         $bind=ldap_bind($ldap,$user.'@'.$ico,$pwd);
-         if($bind){
-             $this->data('Ok');
-             return true;
-         }
-         ldap_unbind($ldap);
+        // $ico='iconpln.co.id';
+        // $dn = 'DC=iconpln,DC=co,DC=id';
+        // $user=explode('@',$this->params->key('email'))[0];
+        // $pwd=$this->params->key('password');
+        //
+        // $ldap=ldap_connect('ldap://'.$ico.':389');
+        //  ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
+        //  ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
+        //  $bind=ldap_bind($ldap,$user.'@'.$ico,$pwd);
+        //  if($bind){
+        //      $this->data('Ok');
+        //      return true;
+        //  }
+        //  ldap_unbind($ldap);
     }
-*/
-
 }

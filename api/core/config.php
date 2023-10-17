@@ -7,15 +7,15 @@ $db=array(
      'host'=>'127.0.0.1',
      'user'=>'root',
      'pwd' =>'admin',
-     'name'=>'todolist',
+     'name'=>'complainer',
      'offset' =>'500',
 );
 
-$prefix='Td';
+$prefix='cc';
 $noauth=array('image','login');
 $jwt=array(
     'alg'=>'HS256',
-    'key'=>'todolist',
+    'key'=>'complainer',
 );
 
 /* dev_mode -> develop mode
