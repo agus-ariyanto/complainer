@@ -7,11 +7,11 @@ $db=array(
      'host'=>'127.0.0.1',
      'user'=>'root',
      'pwd' =>'admin',
-     'name'=>'complainer',
+     'name'=>'temansapa',
      'offset' =>'500',
 );
 
-$prefix='cc';
+$prefix='ts';
 $noauth=array('image','login');
 $jwt=array(
     'alg'=>'HS256',

@@ -1,0 +1,16 @@
+<div class="itr-dialog-backdrop {{active?'active':''}}">
+    <div class="col-md-6 p-3 m-auto mb-2 bg-white border border-secondary rounded-bottom small-full-width">
+        <div class="mb-3 text-end">
+            <span class="fa fa-times h5 text-danger pointer" ng-click="close()"></span>
+        </div>
+        <div class="mb-3 " ng-show="items.length>10">
+            <input type="text" class="form-control" ng-model="search_text" placeholder="ketik kata kunci">
+        </div>
+        <div class="small text-muted text-end">
+            <em>*klik untuk pilih</em>
+        </div>
+        <div class="border-top item-hover" ng-repeat="i in items | filter:search_text" ng-click="submit(i)">{{i.nama}}</div>
+        <div class="border-top mb-3">&nbsp;</div>
+        
+    </div>
+</div>

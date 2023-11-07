@@ -93,6 +93,8 @@ class Login extends Base{
       protected function createUser(){
           $this->auth->colVal('usr',$this->params->key('username'));
           $this->auth->colVal('pwd',sha1($this->params->key('password')));
+          $this->auth->colVal('grup_id',4);
+          
           $id=$this->auth->save();
           $this->createToken($id);
           return $this->auth->select($id);

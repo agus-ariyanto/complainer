@@ -1,0 +1,42 @@
+<div class="form-dialog-x-backdrop {{active?'active':''}}">
+    <div class="col-md-6 form-dialog-x-body m-auto">
+        <div class="row g-3">
+            <div class="col-md-12">
+              <label class="form-label"><span class="fa fa-user text-muted pe-3"></span>Nama</label>
+              <input type="text" class="form-control" ng-model="data.nama" placeholder="Nama Lengkap" required>
+            </div>
+            <div class="col-md-12">
+              <label class="form-label"><span class="fa fa-couch text-muted pe-3"></span>Bidang</label>
+              <input type="text" class="form-control" ng-model="data.bidang_nama" ng-click="bidangDlg.open()">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><span class="fa fa-user-tag text-muted pe-3"></span>Nip</label>
+              <input type="text" class="form-control"  ng-model="data.nip" placeholder="Nomor Pegawai">
+            </div>
+            <div class="col-6">
+              <label class="form-label"><span class="fa fa-mobile-alt text-muted pe-3"></span>Hp</label>
+              <input type="text" class="form-control"  ng-model="data.hp" placeholder="Nomor Handphone">
+            </div>
+            <div class="col-md-6">
+              <label class="form-label"><span class="fa fa-bezier-curve text-muted pe-3"></span>SBU</label>
+              <input type="text" class="form-control" ng-model="data.sbu_nama" ng-click="sbuDlg.open()">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label"><span class="fa fa-building text-muted pe-3"></span>Office</label>
+                <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">
+            </div>
+        </div>
+
+        <div class="separator-50"></div>
+        <div class="mb-3 row">
+            <div class="col d-grid">
+            </div>
+            <div class="col d-grid">
+                <button class="btn btn-themes">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div alt-component="search" data-scope="bidangDlg"></div>
+<div alt-component="search" data-scope="sbuDlg"></div>
+<div alt-component="search" data-scope="officeDlg"></div>

@@ -7,19 +7,31 @@ define([''], function(){ return ['$scope','$rootScope','$auth',function($scope,$
         $scope.smallDevice=false;
         $scope.tab=0;
         $scope.tabSelected={}
+        $scope.tabRecentSelected={}
         $scope.showNotif=0;
         $scope.notifText='';
+        $scope.right_active=false;
+        $scope.disable=false;
+        $scope.toRight=function(r){
+            $scope.tabRecentSelected=angular.copy($scope.tabSelected);
+            $scope.right_active=false;
+            if($scope.disable) return;
+            $scope.tabSelected=angular.copy(r);
+            r.init();
+        }
 
         $scope.toTab=function(id){
+            $scope.tabRecentSelected=angular.copy($scope.tabSelected);
+            if($scope.disable) return;
             var a=$scope.tabItem.map(function(e){
                 return e.id;
             }).indexOf(id);
-
+            
             $scope.tab=a;
             $scope.tabSelected=$scope.tabItem[a];
             for(var i=0;i<$scope.tabItem.length;i++)
-                $scope.tabItem[i].active=false;
-
+            $scope.tabItem[i].active=false;
+            
             $scope.tabItem[a].active=true;
             $scope.tabItem[a].init();
             $scope.menuActive(!$scope.smallDevice);
@@ -49,7 +61,20 @@ define([''], function(){ return ['$scope','$rootScope','$auth',function($scope,$
         }
 
         // overwrite lihat di route/admin
-        $scope.tabItem=[];
+        /* 
+           tabItem:[
+               
+         */
+        $scope.tabItem=[/*  
+            {
+                id:0,
+                icon:'home',
+                title:'Home',
+                active:true, 
+                init:function(){
+                }
+            }, */];
+        $scope.rightItem=[];
 
         $scope.init();
     }]

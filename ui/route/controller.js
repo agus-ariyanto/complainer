@@ -20,10 +20,12 @@ define(['ui/system/api'], function(){
                     if(res.data.token){
                         var u=res.data.user;
                         $auth.login(res.data.token);
+                        /*    
                         if(u.bidang_id==0||u.unit_id==0) {
                             $scope.dialogAccount.open(u,false);
                             return ;
-                        }
+                        } 
+                        */
                         $auth.setUser(u);
                         $scope.init();
                         return;

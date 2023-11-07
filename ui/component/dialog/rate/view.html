@@ -1,0 +1,37 @@
+<div class="itr-dialog-backdrop {{active?'active':''}}">
+    <div class="col-md-6 p-3 m-auto mb-2 bg-white border border-secondary rounded-bottom small-full-width">
+       <!--  <div class="mb-3 text-end">
+            <span class="fa fa-times h5 text-danger pointer" ng-click="close()"></span>
+        </div> -->
+
+        <div class="mb-3">&nbsp;</div>
+        <div class="mb-3">
+           <label class="form-label">Rating</label>
+            <div class="h3">
+                <span class="fa fa-star pe-3 pointer {{bintang>=1?'text-warning':'text-muted'}}" ng-click="bintang=1"></span>
+                <span class="fa fa-star pe-3 pointer {{bintang>=2?'text-warning':'text-muted'}}" ng-click="bintang=2"></span>
+                <span class="fa fa-star pe-3 pointer {{bintang>=3?'text-warning':'text-muted'}}" ng-click="bintang=3"></span>
+                <span class="fa fa-star pe-3 pointer {{bintang>=4?'text-warning':'text-muted'}}" ng-click="bintang=4"></span>
+                <span class="fa fa-star pe-3 pointer {{bintang>=5?'text-warning':'text-muted'}}" ng-click="bintang=5"></span>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ulasan</label>
+            <textarea class="form-control" rows="2" ng-model="data.ulasan" maxlength="60"></textarea>
+            <div class="small text-muted text-end">&nbsp;{{data.ulasan_length}}</div>
+        </div>
+        <div class="separator-50"></div>
+        <div class="row">
+            <div class="col-6">
+                <button type="button" class="btn btn-outline-secondary btn-sm" ng-click="close()">
+                    <span class="fa fa-arrow-left pe-3"></span>Cancel
+                </button>
+            </div>
+            <div class="col-6 text-end">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <span class="fa fa-paper-plane pe-3"></span>Submit
+                </button>
+            </div>
+        </div>     
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="form-dialog-x-backdrop {{active?'active':''}}">
+    <div class="col-md-6 form-dialog-x-body m-auto">
+       
+        <div class="mb-3">
+                <label class="form-label"><span class="fa fa-calendar-day text-muted pe-3"></span>Tanggal</label>
+                <input type="text" ng-model="data.dari_tgl" class="form-control" date-time
+                auto-close="true" view="date" min-view="date" min-date="minDate"
+                max-view="month" format="dd/MM/yyyy" watch-direct-changes
+                placeholder="Tanggal Overtime" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><span class="fa fa-building text-muted pe-3"></span>Office</label>
+            <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><span class="fa fa-sign text-muted pe-3"></span>Lokasi</label>
+            <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label"><span class="fa fa-sticky-note text-muted pe-3"></span>Catatan</label>
+            <textarea class="form-control" rows="3" ng-model="data.catatan" maxlength="120"></textarea>
+            <div class="small text-end text-muted">&nbsp;{{data.catatan_length}}</div>
+        </div>
+
+
+        <div class="separator-50"></div>
+        <div class="mb-3 row">
+            <div class="col d-grid">
+            </div>
+            <div class="col d-grid">
+                <button class="btn btn-themes">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

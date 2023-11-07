@@ -1,8 +1,224 @@
-<div class="navitop" ng-init="active=false">
-    <div class="fa fa-list-alt icon" ng-click="active=!active"></div>
+<style media="screen">
+    .container-fluid{
+        padding-top:75px;
+    }
+    .container-fluid{
+        transition:padding-left 0.250s ease;
+    }
+    .menu-active{
+        padding-left:265px;
+    }
+    .nav-wrapper{
+        position:fixed;
+        left:0;
+        top:0;
+        width:100%;
+        height:50px;
+        z-index:99999;
+        background-color:rgba(255, 255, 255, 0.9);
+    }
+    .itr-nav-top{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:50px;
+        box-shadow:1px 1px 3px #666;
+    }
+    .itr-nav-left{
+        position:fixed;
+        top:0;
+        bottom:0;
+        left:-255px;
+        width:250px;
+        /* border-bottom-right-radius:6px; */
+        /* border-top-right-radius:6px; */
+        overflow:hidden;
+        transition:left 0.5s ease;
+    }
+    .itr-nav{
+        float:left;
+        /* padding-top:2px; */
+        width:250px;
+        height:50px;
+
+    }
+    .itr-nav.top{
+        width:64px;
+    }
+    .itr-nav.menu{
+        display:block;
+        float:none;
+        clear:both;
+        box-shadow:1px 1px 3px #222;
+    }
+    .itr-img-logo{
+        display:inline-block;
+        margin-top:-12px;
+        height:50px;
+    }
+
+    .itr-icon{
+        display:inline-block;
+        font-size:20px;
+        line-height:50px;
+        padding-left:10px;
+        padding-right:10px;
+        cursor:pointer;
+    }
+    .itr-icon-right{
+        display:inline-block;
+        font-size:42px;
+        line-height:50px;
+        cursor:pointer;
+    }
+    .itr-icon.menu{
+        color:white;
+    }
+
+    .itr-brand{
+        font-family:'Trebuchet';
+        font-size:18px;
+        font-weight:bold;
+        line-height:50px;
+        color:#004db5;
+    }
+    .itr-brand.menu{
+        color:white;
+        text-shadow:1px 1px 1px #666;
+    }
+    .itr-nav-left.active{
+        left:0;
+    }
+    .itr-icon.title{
+        padding-top:10px;
+        font-size:22px;
+        font-weight:bold;
+        text-align:center;
+        color:#868686;
+        cursor:default;
+    }
+    .itr-icon.right{
+        padding-top:10px;
+        font-size:20px;
+        color:#868686;
+    }
+    .itr-list-item{
+        padding-left:25px;
+        display:block;
+        width:100%;
+        height:32px;
+        line-height:32px;
+        color:#EAEAEA;
+        cursor:pointer;
+        font-size:1rem;
+    }
+    .itr-list-item-right{
+        padding-left:15px;
+        display:block;
+        width:100%;
+        height:32px;
+        line-height:32px;
+        color:black;
+        cursor:pointer;
+        font-size:1rem;
+    }
+    .itr-list-item-right:hover{
+        background-color:#000;
+        color:white;
+    }
+
+    .itr-list-item > .icon,.itr-list-item-right > .icon{
+        width:40px;
+    }
+    .itr-list-item:hover{
+        background-color:#000;
+    }
+    .itr-list-item.active{
+        background-color:rgb(0, 99, 99);
+        text-shadow:1px 1px 1px #333;
+        cursor:not-allowed;
+    }
+    .itr-backdrop-right{
+        position: fixed;
+        width:200px;
+        height:100vh;
+        right:5px;
+        top:-100vh;
+        z-index: 111111;
+        transition: top 0.5s ease;
+    }
+    .itr-nav-right{
+        width:100%;
+        border-radius: 4px;
+        border:1px solid #deddd3;
+        background-color:#fff6d0;
+    }
+    .itr-backdrop-right.active{
+        top:5px;
+    }
+    .overflow-hidden{
+        display: inline-block;
+        overflow: hidden;
+        height:38px;
+    }
+</style>
+<div class="nav-wrapper" id="nav-wrapper">
+    <div class="itr-nav-top {{active?'color-themes':'bg-themes text-white'}}">
+        <div class="itr-nav top">
+            <span class="itr-icon">
+                <span class="fa fa-bars" ng-click="menuActive(true)"></span>
+            </span>
+        </div>
+        <div class="row">
+            <div class="col-9 text-center">
+                <span class="itr-icon text-uppercase"><span class="fa fa-{{tabSelected.icon}} pe-3"></span>{{tabSelected.title}}</span>
+            </div>
+            <div class="col-2 text-end overflow-hidden">
+                Agus<br>
+                Fasilitas Umum asasd asdasdas asdasdasd asdasdas
+            </div>
+            <div class="col-1 text-end" ng-click="right_active=true">
+                <span class="itr-icon-right">
+                    <span class="fa fa-user-circle"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="itr-nav-left {{active?'active':''}} bg-themes">
+        <div class="itr-nav menu">
+            <span class="itr-icon menu">
+                <span class="fa fa-arrow-left" ng-click="menuActive(false)"></span>
+            </span>
+            <!-- <img src="assets/img/itransport-logo.png" class="itr-img-logo">
+            <span class="itr-brand menu">
+                iTRANSPORT
+            </span> -->
+        </div>
+        <div class="pt-4">
+            <span class="itr-list-item {{i.active?'active':''}}" ng-repeat="i in tabItem" ng-click="toTab(i.id)">
+                <span class="fa fa-{{i.icon}} icon"></span>{{i.title}}
+            </span>
+        </div>
+    </div>
 </div>
-<div class="navileft {{active?'active':''}}">
-    <div class="navileft-top">
-        <div class="fa fa-arrow-left icon" ng-click="active=!active"></div>
+<div class="mb-3 p-3 bg-warning" ng-show="showNotif>0"  ng-click="notifClick()">
+    <span class="fa fa-comment fs-3"></span><span ng-bind-html="notifText"></span>
+</div>
+<div class="itr-backdrop-right {{right_active?'active':''}}" ng-click="right_active=false">
+    <div class="itr-nav-right ">
+        <div class="text-end" ng-click="right_active=false">
+            <span class="itr-icon">
+                <span class="fa fa-arrow-up text-danger"></span>
+            </span>
+        </div>
+        
+        <div>
+            <span class="itr-list-item-right" ng-repeat="r in rightItem" ng-click="toRight(r)">
+                <span class="fa fa-{{r.icon}} icon"></span>{{r.title}}
+            </span>
+            <span class="itr-list-item text-black" style="height:20px">
+            </span>
+        </div>
     </div>
 </div>
