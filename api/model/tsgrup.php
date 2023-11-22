@@ -18,7 +18,7 @@ class TsGrup extends Model{
         ),
         array(
             'id'=>3,
-            'nama'=>'officer',
+            'nama'=>'pic',
             'keterangan'=>'Pelaksana perintah',
         ),
         array(

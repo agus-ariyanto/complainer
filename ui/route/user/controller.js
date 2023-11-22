@@ -1,13 +1,56 @@
 define(['ui/system/api'], function(){
     return ['$scope','$auth','$loading','Api',function($scope,$auth,$loading,Api){
-        $scope.home={}
-        $scope.complainFrm={}
-        $scope.accessFrm={}
-        $scope.parkirFrm={}
-        $scope.idcardFrm={}
+        $scope.home={
+            active:true,
+        }
+        $scope.imageTabs=0;
+        $scope.uploadImage={
+            close:function(){
+                $scope.uploadImage.active=false;    
+                if(!$scope.uploadImage.saved) return;
+                if($scope.imageTabs==1) 
+                    $scope.complainFrm.data.image=$scope.uploadImage.data.url;
+                if($scope.imageTabs==2) 
+                    $scope.accessFrm.data.image=$scope.uploadImage.data.url;    
+                if($scope.imageTabs==3) 
+                    $scope.parkirFrm.data.image=$scope.uploadImage.data.url;        
+                if($scope.imageTabs==4) 
+                    $scope.idcardFrm.data.image=$scope.uploadImage.data.url;        
+            }
+        }
+        $scope.complainFrm={
+            uploadImage:function(){
+                $scope.imageTabs=1;
+                $scope.uploadImage.open();
+            }
+        }
+        $scope.accessFrm={
+            uploadImage:function(){
+                $scope.imageTabs=2;
+                $scope.uploadImage.open();
+            }
+        }
+        $scope.parkirFrm={
+            uploadImage:function(){
+                $scope.imageTabs=3;
+                $scope.uploadImage.open();
+            }
+        }
+        $scope.idcardFrm={
+            uploadImage:function(){
+                $scope.imageTabs=4;
+                $scope.uploadImage.open();
+            }
+        }
+        $scope.pinjamFrm={
+            uploadImage:function(){
+                $scope.imageTabs=5;
+                $scope.uploadImage.open();
+            }
+        } 
         $scope.overtimeFrm={}
-        $scope.pinjamFrm={} 
         $scope.profilFrm={}
+        $scope.history={}
        
         $loading.active=true;
         $scope.closeAll=function(){
@@ -19,15 +62,16 @@ define(['ui/system/api'], function(){
             $scope.idcardFrm.close(); 
             $scope.profilFrm.close(); 
         };
- 
+        $scope.rate={};
+        
         $scope.nav={
             disable:false,
             tabItem:[
+                
                 {id:0,icon:'home',title:'Home',active:true, init:function(){
                     $scope.closeAll();
-                    $scope.home.init();
+                    $scope.home.open();
                 }},
-
                 /* lihat model tskode */
                 {id:1,icon:'comment-dots',title:'Komplain',active:false, init:function(){
                     $scope.closeAll();
@@ -55,9 +99,9 @@ define(['ui/system/api'], function(){
                 }},
                 /* ----- */
 
-                {id:6,icon:'history',title:'Riwayat',active:false, init:function(){
+                {id:7,icon:'history',title:'Riwayat',active:false, init:function(){
                     $scope.closeAll();
-                    $scope.riwayat.open();
+                    $scope.history.open();
                 }},
             ],
             rightItem:[
@@ -81,7 +125,7 @@ define(['ui/system/api'], function(){
             }
         }
         $scope.nav.tabSelected=$scope.nav.tabItem[0];
-        $scope.rate={};
+        // $scope.nav.disable=!($auth.sbu_id&&$auth.office_id&&$auth.bidang_id&&$auth.atasan_id);
         // $scope.nav.disable=true;
 /*end controller*/
         }];

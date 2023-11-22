@@ -1,43 +1,12 @@
 <div class="form-dialog-x-backdrop {{active?'active':''}}">
-    <div class="col-md-6 form-dialog-x-body m-auto">
-     
-        <div class="mb-3">
-            <label><span class="fa fa-calendar-day text-muted"></span>&nbsp;Tanggal</label>
-            <input type="text" ng-model="data.dari_tgl" class="form-control" date-time
-            auto-close="true" view="date" min-view="date" min-date="minDate"
-            max-view="month" format="dd/MM/yyyy" watch-direct-changes
-            placeholder="Tanggal Overtime" required>
-        </div>
-        <div class="mb-3">
-            <label class="form-label"><span class="fa fa-shapes text-muted pe-3"></span>Barang</label>
-            <input type="text" class="form-control" ng-model="data.office_nama">    
-        </div>
-        <div class="mb-3">
-            <label class="form-label"><span class="fa fa-sticky-note text-muted pe-3"></span>Catatan</label>
-            <textarea class="form-control" rows="3" ng-model="catatan"></textarea>
-        </div>
+    <div class="col-md-8 form-dialog-x-body">
+     <div class="border-bottom py-3">
+                 <div><span class="fa fa-comment-dots text-muted pe-3"></span>Komplain</div>
+                 <div>Agus Ariyanto</div>
+                 <div>Bidang Fasilitas Umum</div>
+                 <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto sunt amet omnis doloribus voluptates</div>
+     </div>
 
-
-        <div>
-            <div class="image-upload">
-                <div class="icon-image-close">x</div>
-                <img ng-src="{{data.img_1||'assets/img/upload-foto.png'}}" class="image-upload-content">
-            </div>
-            <div class="image-upload">
-                <div class="icon-image-close">x</div>
-                <img ng-src="{{data.img_1||'assets/img/upload-foto.png'}}" class="image-upload-content">
-            </div>
-        </div>
-        <div class="small text-muted">
-            <em>Foto Obyek</em>  
-        </div>
-        <div class="separator-50"></div>
-        <div class="mb-3 row">
-            <div class="col d-grid">
-            </div>
-            <div class="col d-grid">
-                <button class="btn btn-themes">Submit</button>
-            </div>
-        </div>
+        
     </div>
 </div>

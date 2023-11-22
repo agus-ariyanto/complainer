@@ -4,16 +4,12 @@ define(['ui/system/helper','ui/system/api'], function(){
         $scope.active=false;
         $scope.saved=false;
         $scope.data={};
-        $scope.items=[
-            {id:1,nama:'Mampang'},
-            {id:2,nama:'Jamsostek'},
-            {id:3,nama:'Gandul'},
-            {id:4,nama:'Cawang'}
-        ];
+        $scope.items=[];
         $scope.search_text='';
        
         
         $scope.open=function(val){
+            if(!$scope.items.length) $scope.init();
             $scope.search_text='';
             $scope.data={};
             $scope.saved=false;
@@ -26,17 +22,19 @@ define(['ui/system/helper','ui/system/api'], function(){
             $scope.saved=true;
             $scope.close();
         }
-        $scope.init=function(){
-            /* 
-            overide parent 
-            Api.Get(url);
-            */
-            return;
+        $scope.getData=function(url,data){
+            data=data||{order:'nama ASC'};
+            Api.Get(url,data)
+            .then(function(r){
+                $scope.items=r.data;
+            });
         }
         $scope.close=function(){
             $scope.active=false;
         }
-
+        $scope.init=function(){
+            return;
+        }
 
     }]
 });

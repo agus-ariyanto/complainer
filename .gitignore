@@ -1,0 +1,9 @@
+.DS_store
+**/.DS_Store
+**/node_modules
+**/config.php
+.vscode
+**/.vscode
+.htaccess
+**/.htaccess
+api/upload/*

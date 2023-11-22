@@ -6,6 +6,7 @@ class Login extends Base{
          parent::__construct();
          $this->params=new Params;
          $this->addModel('auth');
+         $this->db=new DbJoin;
     }
 
     //create token untuk auth
@@ -20,13 +21,29 @@ class Login extends Base{
              'username'=>$username,
             // 'password'=>$pwd,
          );
+         
          $token=JWT::encode($data,$jwt['key'],$jwt['alg']);
          //$pwd=sha1($pwd);
-         $this->auth->colVal('pwd',sha1($password));
+        //  $this->auth->colVal('pwd',sha1($password));
          $this->auth->colVal('token',$token);
          $this->auth->save($id);
          return $token;
     }
+
+    protected function createUser(){
+        $this->auth->colVal('usr',$this->params->key('username'));
+        $this->auth->colVal('pwd',sha1($this->params->key('password')));
+        $this->auth->colVal('grup_id',4);
+        $this->auth->colVal('nama',strtoupper(str_replace('.',' ',$this->params->key('username'))));
+        $id=$this->auth->save();
+        $token=$this->createToken($id);
+        $userdata=$this->db->id('user',$id);
+        return array(
+            'token'=>$token,
+            'userdata'=>$userdata,
+        );
+    }
+
 
     protected function local(){
         $username=$this->params->key('username');
@@ -39,15 +56,16 @@ class Login extends Base{
          if(count($res)>0){
 
              $data=$res[0];
-             unset($data['token']);
-             unset($data['pwd']);
-
+             /* unset($data['token']);
+             unset($data['pwd']); */
+             $userdata=$this->db->id('user',$data['id']);
              // email dan password ada di table lokal
              if($res[0]['pwd']==sha1($password)){
                  $token=empty($res[0]['token']) ? $this->createToken($res[0]['id']) : $res[0]['token'];
+                 $userdata=$this->db->id('user',$res[0]['id']);
                  return array(
                      'success'=>1,
-                     'userdata'=>$data,
+                     'userdata'=>$userdata,
                      'token'=>$token,
                  );
              }
@@ -55,7 +73,7 @@ class Login extends Base{
              // email ada tapi password salah
              return array(
                  'success'=>2,
-                 'userdata'=>$data,
+                 'userdata'=>$userdata,
                  'token'=>0,
              );
          }
@@ -90,33 +108,20 @@ class Login extends Base{
       }
 
 
-      protected function createUser(){
-          $this->auth->colVal('usr',$this->params->key('username'));
-          $this->auth->colVal('pwd',sha1($this->params->key('password')));
-          $this->auth->colVal('grup_id',4);
-          
-          $id=$this->auth->save();
-          $this->createToken($id);
-          return $this->auth->select($id);
-      }
 
 
      function index(){
          $local=$this->local();
-         if($local['success']==1) return $this->data($local);
-
+         if($local['success']==1) 
+             return $this->data($local);
           $ldap=$this->ldap();
           if($ldap){
               if($local['success']==0){
                   $data=$this->createUser();
-                  $token = $data['token'];
-                  unset($data['pwd']);
-                  unset($data['token']);
-                  return $this->data(array(
-                     'success' =>3,
-                     'userdata'=>$data,
-                     'token'=>$token,
-                  ));
+                  $data['success']=3;
+                /*    $token = $data['token'];
+                   $userdata=$this->userid($data['id']);   */
+                  return $this->data($data);
               }
               $local['token']=$this->createToken($local['userdata']['id']);
               return $this->data($local);
@@ -167,4 +172,14 @@ class Login extends Base{
         //  }
         //  ldap_unbind($ldap);
     }
+    function tabletest(){
+        $a=array('action','auth','bidang','code','grup','lokasi','office','proses','rate','sbu','step','submission');
+        $b=array();
+        foreach($a as $value){
+            $this->addModel($value);
+            $b[]=$this->$value->testQry();
+        }
+        $this->data($b);
+    }
 }
+

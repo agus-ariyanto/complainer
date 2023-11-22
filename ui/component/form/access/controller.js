@@ -10,6 +10,9 @@ define(['ui/system/api'], function(){
         $scope.close=function(){
             $scope.active=false;
         }
+        $scope.uploadImage=function(){
+            return;
+        }
 
         /*end controller*/
     }];

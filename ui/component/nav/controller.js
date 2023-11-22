@@ -4,6 +4,7 @@ define([''], function(){ return ['$scope','$rootScope','$auth',function($scope,$
             $scope.active=val;
             $routeScope.menuActive=val;
         }
+        $scope.data=$auth.user;
         $scope.smallDevice=false;
         $scope.tab=0;
         $scope.tabSelected={}
@@ -19,7 +20,7 @@ define([''], function(){ return ['$scope','$rootScope','$auth',function($scope,$
             $scope.tabSelected=angular.copy(r);
             r.init();
         }
-
+    
         $scope.toTab=function(id){
             $scope.tabRecentSelected=angular.copy($scope.tabSelected);
             if($scope.disable) return;

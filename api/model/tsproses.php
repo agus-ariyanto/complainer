@@ -17,7 +17,6 @@ class TsProses extends Model{
         'submission_id'=>'INT',
         'action_id'=>'INT',
         'rate_id'=>'INT DEFAULT 0',
-        'tgl'=>'DATETIME',
         'tgl_submit'=>'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
         'tgl_approve'=>'DATETIME',
         'tgl_action'=>'DATETIME',

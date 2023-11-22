@@ -3,9 +3,10 @@ define(['ui/system/api'], function(){
             $scope.init=function(){
                 if($auth.islogin()){
                     var a='login';
-                    if($auth.user.grup_id=='1') a='a';
-                    if($auth.user.grup_id=='2') a='p';
-                    if($auth.user.grup_id=='3') a='o';
+                    if($auth.user.grup_id=='1') a='admin';
+                    if($auth.user.grup_id=='2') a='appr';
+                    if($auth.user.grup_id=='3') a='pic';
+                    if($auth.user.grup_id=='4') a='user';
                     window.location.href=alt.baseUrl + a;
                 }
             }
@@ -18,18 +19,11 @@ define(['ui/system/api'], function(){
                 Api.Post('login',$scope.data)
                 .then(function(res){
                     if(res.data.token){
-                        var u=res.data.user;
+                        var u=res.data.userdata;
                         $auth.login(res.data.token);
-                        /*    
-                        if(u.bidang_id==0||u.unit_id==0) {
-                            $scope.dialogAccount.open(u,false);
-                            return ;
-                        } 
-                        */
                         $auth.setUser(u);
                         $scope.init();
-                        return;
-                    }
+                    }    
                     $message.failed('Salah Username atau Password');
                 });
             }

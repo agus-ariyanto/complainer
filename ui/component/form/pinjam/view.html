@@ -1,5 +1,5 @@
 <div class="form-dialog-x-backdrop {{active?'active':''}}">
-    <div class="col-md-6 form-dialog-x-body m-auto">
+    <div class="col-md-6 form-dialog-x-body">
      
         <div class="mb-3">
             <label><span class="fa fa-calendar-day text-muted"></span>&nbsp;Tanggal</label>
@@ -19,13 +19,12 @@
         </div>
 
         <div>
-            <div class="image-upload">
+            <div class="image-upload" ng-show="data.image">
                 <div class="icon-image-close">x</div>
-                <img ng-src="{{data.img_1||'assets/img/upload-foto.png'}}" class="image-upload-content">
+                <img ng-src="{{data.image||'assets/img/upload-foto.png'}}" class="image-upload-content">
             </div>
-            <div class="image-upload">
-                <div class="icon-image-close">x</div>
-                <img ng-src="{{data.img_1||'assets/img/upload-foto.png'}}" class="image-upload-content">
+            <div class="image-upload" ng-show="!data.image">
+                <img ng-src="{{data.image||'assets/img/upload-foto.png'}}" class="image-upload-content" ng-click="uploadImage()">
             </div>
         </div>
         <div class="small text-muted">

@@ -18,7 +18,7 @@ define(['ui/system/helper'], function(){
         $scope.$watch('data.ulasan', function(e){
             $scope.data.ulasan_length='';
             if(e.length>0) 
-                $scope.data.ulasan_length=(60-e.length)+' Karakter tersisa';
+                $scope.data.ulasan_length=(120-e.length)+' Karakter tersisa';
         });
 
 

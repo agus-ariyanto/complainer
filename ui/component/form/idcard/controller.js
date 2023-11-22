@@ -4,11 +4,16 @@ define(['ui/system/api'], function(){
         $scope.saved=false;
         $scope.title='';
         $scope.icon='';
+        
         $scope.open=function(){
             $scope.active=true;
         }
         $scope.close=function(){
             $scope.active=false;
+        }
+        /* overide parent */
+        $scope.uploadImage=function(){
+            return;
         }
 
         /*end controller*/

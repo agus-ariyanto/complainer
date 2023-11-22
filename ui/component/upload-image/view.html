@@ -1,0 +1,22 @@
+<div class="itr-dialog-backdrop {{active?'active':''}}">
+    <div class="col-md-6 p-3 m-auto mb-2 bg-white border border-secondary rounded-bottom small-full-width">
+        <div class="mb-3 text-end">
+            <span class="fa fa-times h5 text-danger pointer" ng-click="close()"></span>
+        </div>
+        <div class="mb-3">
+                <button type="button" class="btn btn-light btn-sm" ng-click="selectImage()">
+                    <span class="fa fa-camera pe-3"></span>Pilih Foto
+                </button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="submit()">
+                    <span class="fa fa-upload pe-3"></span>&nbsp;Upload
+                </button>
+        </div>
+        <div class="mb-3 bg-light">
+            <canvas id="temp-canvas" style="width:100%;height:auto"></canvas>
+        </div>
+        
+    </div>
+</div>
+
+<input type="file" name="photo_upload" onchange="angular.element(this).scope().photoOnChange(this)"
+accept="image/xpng, image/jpeg" style="display: none;" id="photo-upload">

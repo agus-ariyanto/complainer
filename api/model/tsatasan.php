@@ -14,5 +14,5 @@ class TsAtasan extends Model{
         'office_id'=>'INT DEFAULT 0',
         'sbu_id'=>'INT DEFAULT 0',
     );
-    public $join='grup.bidang,office,sbu';
+    public $join='office,sbu';
 }
