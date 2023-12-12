@@ -4,6 +4,9 @@ class Proses extends Ctrl{
         parent::__construct();
         $this->model='proses';
         $this->model_id=$this->query[0];
+        $d=new DateTime;
+        $this->ymd=$d->format('Y-m-d H:i:s');
+        
     }
     /* 
          array(
@@ -38,6 +41,7 @@ class Proses extends Ctrl{
             $this->params->set('and',1);
         }
     }
+    
     function complain(){
         $this->setCode(1);
         $this->index();
@@ -62,14 +66,20 @@ class Proses extends Ctrl{
         $this->setCode(6);
         $this->index();
     }
+
     function insert(){
         /* item detail */
+        if(empty($this->params->key('start'))) $this->params->set('start',$this->ymd);
+        // if(empty($this->params->key('stop'))) $this->params->set('stop',$this->ymd);
         $res=$this->db->insert('submission',$this->params);
 
         $this->params->set('submission_id',$res['id']);
+        $this->params->set('tgl_submit',$this->ymd);
         $this->params->set('step_id',1);
+
         $this->params->set('user_id',$this->userdata['id']);
         $this->params->set('sbu_id',$this->userdata['sbu_id']);
+
         $res=$this->db->insert($this->model,$this->params);
         /* return proses - join */
         $this->data($this->db->id($this->model,$res['id']));

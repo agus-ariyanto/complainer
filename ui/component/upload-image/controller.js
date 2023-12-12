@@ -6,6 +6,7 @@ define(['ui/system/helper','ui/system/api'], function(){
         $scope.data={};
         
         $scope.submit=function(){
+            if($scope.data.image=='') return;
             Api.Post('image/post/png',$scope.data)
             .then(function(r){
                 if(r.data.success){

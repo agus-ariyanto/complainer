@@ -1,23 +1,22 @@
 <div class="form-dialog-x-backdrop {{active?'active':''}}">
-    <div class="col-md-6 form-dialog-x-body">
-        <div class="mb-3">
-            <label class="form-label"><span class="fa fa-calendar-day text-muted pe-3"></span>Tanggal</label>
-            <input type="text" ng-model="data.dari_tgl" class="form-control" date-time
-            auto-close="true" view="date" min-view="date" min-date="minDate"
-            max-view="month" format="dd/MM/yyyy" watch-direct-changes
-            placeholder="Tanggal Overtime" required>
+    <div class="col-md-6 m-auto bg-white form-dialog-x-body">
+      <div class="row form-dialog-navbar">
+        <div class="col-1" ng-click="close()">
+          <span class="fa fa-arrow-left"></span>
         </div>
+        <div class="col text-center">{{title}}</div>
+      </div>
         <div class="mb-3">
             <label class="form-label"><span class="fa fa-building text-muted pe-3"></span>Office</label>
             <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
         </div>
         <div class="mb-3">
             <label class="form-label"><span class="fa fa-sign text-muted pe-3"></span>Lokasi</label>
-            <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
+            <input type="text" class="form-control" ng-model="data.lokasi_nama" ng-click="lokasiDlg.open()">    
         </div>
         <div class="mb-3">
             <label class="form-label"><span class="fa fa-lightbulb text-muted pe-3"></span>Obyek</label>
-            <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
+            <input type="text" class="form-control" ng-model="data.obyek">    
         </div>
         <div class="mb-3">
             <label class="form-label"><span class="fa fa-sticky-note text-muted pe-3"></span>Catatan</label>
@@ -30,7 +29,7 @@
                 <div class="icon-image-close">x</div>
                 <img ng-src="{{data.image||'assets/img/upload-foto.png'}}" class="image-upload-content">
             </div>
-            <div class="image-upload" ng-show="!data.image">
+            <div class="image-upload-plus" ng-show="!data.image">
                 <img ng-src="{{data.image||'assets/img/upload-foto.png'}}" class="image-upload-content" ng-click="uploadImage()">
             </div>
         </div>
@@ -44,8 +43,10 @@
             <div class="col d-grid">
             </div>
             <div class="col d-grid">
-                <button class="btn btn-themes">Submit</button>
+                <button class="btn btn-themes" ng-click="submit()">Submit</button>
             </div>
         </div>
     </div>
 </div>
+<div alt-component="search" data-scope="officeDlg"></div>
+<div alt-component="search" data-scope="lokasiDlg"></div>

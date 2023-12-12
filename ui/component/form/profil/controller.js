@@ -3,7 +3,7 @@ define(['ui/system/api'], function(){
         $scope.active=false;
         $scope.saved=false;
         $scope.title='';
-        $scope.icon='';
+        $scope.message='Testing';
         $scope.data=angular.copy($auth.user);
         $scope.open=function(){
             $scope.active=true;

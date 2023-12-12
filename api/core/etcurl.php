@@ -47,6 +47,7 @@ class EtCurl{
             CURLOPT_USERAGENT =>$this->_usragent,
             CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => $post
+            // CURLOPT_USERPWD, $username . ":" . $password);
         ));
 
         /* Send the request & save response to $resp */

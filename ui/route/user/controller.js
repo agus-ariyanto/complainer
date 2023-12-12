@@ -2,6 +2,16 @@ define(['ui/system/api'], function(){
     return ['$scope','$auth','$loading','Api',function($scope,$auth,$loading,Api){
         $scope.home={
             active:true,
+            init:function(){
+                Api.Get('proses',{
+                    user_id:{equal:$auth.user.id},
+                    step_id:{lte:3},
+                    and:1
+                })
+                .then(function(r){
+                    $scope.home.items=r.data;
+                });
+            }
         }
         $scope.imageTabs=0;
         $scope.uploadImage={
@@ -22,6 +32,10 @@ define(['ui/system/api'], function(){
             uploadImage:function(){
                 $scope.imageTabs=1;
                 $scope.uploadImage.open();
+            },
+            close:function(){
+                if($scope.complainFrm.saved)
+                    $scope.home.init();
             }
         }
         $scope.accessFrm={
@@ -50,8 +64,21 @@ define(['ui/system/api'], function(){
         } 
         $scope.overtimeFrm={}
         $scope.profilFrm={}
-        $scope.history={}
-       
+        $scope.history={
+            active:false,
+            init:function(){
+                Api.Get('proses',{
+                    user_id:{equal:$auth.user.id},
+                    step_id:{gte:4},
+                    and:1
+                })
+                .then(function(r){
+                    $scope.history.items=r.data;
+                });
+            }
+        }
+        
+
         $loading.active=true;
         $scope.closeAll=function(){
             $scope.complainFrm.close();
@@ -73,7 +100,7 @@ define(['ui/system/api'], function(){
                     $scope.home.open();
                 }},
                 /* lihat model tskode */
-                {id:1,icon:'comment-dots',title:'Komplain',active:false, init:function(){
+               /*  {id:1,icon:'comment-dots',title:'Komplain',active:false, init:function(){
                     $scope.closeAll();
                     $scope.complainFrm.open();
                 }},
@@ -96,13 +123,25 @@ define(['ui/system/api'], function(){
                 {id:6,icon:'id-badge',title:'Kartu ID',active:false, init:function(){
                     $scope.closeAll();
                     $scope.idcardFrm.open();
-                }},
+                }}, */
                 /* ----- */
 
+                {id:7,icon:'bell',title:'Monitoring',active:false, init:function(){
+                    $scope.closeAll();
+                    $scope.history.open();
+                }},
                 {id:7,icon:'history',title:'Riwayat',active:false, init:function(){
                     $scope.closeAll();
                     $scope.history.open();
                 }},
+                {id:7,icon:'user',title:'Profil',active:false, init:function(){
+                    $scope.closeAll();
+                    $scope.history.open();
+                }},
+                {id:7,icon:'power-off',title:'Logout',active:false, init:function(){
+                    $scope.closeAll();
+                    $scope.history.open();
+                }}
             ],
             rightItem:[
                 {id:0,icon:'user',title:'Profil',init:function(){

@@ -1,12 +1,17 @@
 <style media="screen">
-   
+   .menu-active{
+       padding-left: 250px;
+   }
+   .trans-content{
+       transition: padding 1s ease;
+   }
     .nav-wrapper{
         position:fixed;
         left:0;
         top:0;
         width:100%;
         height:50px;
-        z-index:99999;
+        /* z-index:99999; */
         background-color:rgba(255, 255, 255, 0.9);
     }
     .itr-nav-top{
@@ -170,6 +175,14 @@
 .itr-dialog-backdrop.active{
     top:-2px;
 }
+.div-right{
+    
+}
+@media (max-width:767px) {
+    .div-right{
+        padding-left:10px;
+    }
+}
 </style>
 <div class="nav-wrapper" id="nav-wrapper">
     <div class="itr-nav-top {{active?'color-themes':'bg-themes text-white'}}">
@@ -179,20 +192,29 @@
             </span>
         </div>
         <div class="row">
+            <div class="col-12 text-center">
+                <span class="itr-icon text-uppercase"><span class="fa fa-{{tabSelected.icon}} pe-3"></span>{{tabSelected.title}}</span>
+            </div>
+        </div>
+
+        <!-- <div class="row">
             <div class="col-8 text-center">
                 <span class="itr-icon text-uppercase"><span class="fa fa-{{tabSelected.icon}} pe-3"></span>{{tabSelected.title}}</span>
             </div>
-            <div class="col-3 text-center overflow-hidden">
-                <small>
-                    {{data.nama}}<br>{{data.bidang_nama}}
-                </small>
+            <div class="col-3 mt-2 text-center overflow-hidden">
+                <div class="small">
+                    {{data.nama}}
+                </div>
+                <div class="small lh-sm">
+                    {{data.bidang_nama}}
+                </div>
             </div>
             <div class="col-1 text-end" ng-click="right_active=true">
                 <span class="itr-icon-right">
                     <span class="fa fa-user-circle"></span>
                 </span>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="itr-nav-left {{active?'active':''}} bg-themes">
         <div class="itr-nav menu">
@@ -214,6 +236,7 @@
 <div class="mb-3 p-3 bg-warning" ng-show="showNotif>0"  ng-click="notifClick()">
     <span class="fa fa-comment fs-3"></span><span ng-bind-html="notifText"></span>
 </div>
+
 <div class="itr-backdrop-right {{right_active?'active':''}}" ng-click="right_active=false">
     <div class="itr-nav-right ">
         <div class="text-end" ng-click="right_active=false">

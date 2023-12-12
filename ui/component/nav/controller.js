@@ -78,5 +78,7 @@ define([''], function(){ return ['$scope','$rootScope','$auth',function($scope,$
         $scope.rightItem=[];
 
         $scope.init();
+        
+        /* end controller */
     }]
 });

@@ -48,13 +48,13 @@
     width:100%;
     height:100vh;
     z-index: 99999;
-    background-color:rgba(34, 34, 34, 0.074);
+    background-color:#ffffff;
     transition:top 1s ease;
     overflow-y: auto;
     padding-top:10px;
 }
 .form-dialog-backdrop.active{
-    top:0px;
+    top:0;
 }
 .form-dialog-content{
     /* min-height:100vh; */
@@ -112,12 +112,12 @@
     width:100%;
     height:100vh;
     z-index: 99999;
-    background-color:white;
+    background-color:rgba(0, 0, 0, 0.704);
     transition:left 0.250s ease;
     overflow-y: auto;
 }
 .form-dialog-x-backdrop.active{
-    left:270px;
+    left:0;
 }
 .form-dialog-x-top{
    height: 50px;
@@ -130,7 +130,12 @@
 }
 .form-dialog-x-body{
     padding: 30px;
-    padding-top:80px;
+    padding-top:15px;
+ }
+ .form-dialog-navbar{
+     width:100%;
+     font-size: 18px;
+     padding-bottom:30px;
  }
 .form-dialog-x-top>span{
     padding-left:15px;
@@ -193,10 +198,21 @@
     padding:10px;
     /* background-color: #666; */
     border:1px dashed #bbb;
+
+}
+.image-upload-plus{
+    position: relative;
+    display: inline-block;
+    width:128px;
+    height:auto;
+    padding:10px;
+    /* background-color: #666; */
+    border:1px dashed #bbb;
 }
 .image-upload-content{
     width:100%;
     height:auto;
+    cursor: pointer;
 }
 .icon-image-close{
     position: absolute;
@@ -205,11 +221,12 @@
     text-align: center;
     background-color: red;
     color: white;
-    text-shadow: 1px 1px 1px black;
+    /* text-shadow: 1px 1px 1px black; */
+    border: 1px solid white;
     width:24px;
     height:24px;
     border-radius: 12px;
-    line-height: 22px;
+    line-height: 20px;
     cursor: pointer;
 }
 .icon-image-close:hover{
@@ -302,6 +319,40 @@
     color:inherit;
     cursor: pointer;
 }
+
+
+.button-home{
+    display: inline-block;
+    /* width:128px; */
+    padding:15px;
+    border: 1px solid #cbcbcb;
+    border-radius: 2px;
+    text-align: center;
+    cursor: pointer;
+}
+.button-home:hover{
+    background-color: #dfdede;
+}
+.icon-home,.icon-home-card{
+    /* width:128px;
+    height: 128px; */
+    color: darkcyan;
+    display: block;
+    font-size: 72px;
+    line-height: 72px;
+    width:84px;
+}
+.icon-home-card{
+    color:darkmagenta;
+}
+.main-content{
+    padding-top:100px;
+}
+.content-home{
+    padding-left:15px;
+}
+
+
 @media (max-width: 767px) {
     .form-login{
         width:100%;
@@ -320,3 +371,4 @@
         left:0;
     }
 }
+

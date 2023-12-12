@@ -15,15 +15,19 @@ class TsStep extends Model{
         ),
         array(
             'id'=>3,
-            'nama'=>'Di Tolak Atasan',
+            'nama'=>'Selesai',
         ),
         array(
             'id'=>4,
-            'nama'=>'Penjadwalan kembali'
+            'nama'=>'Rated',
         ),
         array(
             'id'=>5,
-            'nama'=>'Selesai',
+            'nama'=>'Di Tolak Atasan',
+        ),
+        array(
+            'id'=>6,
+            'nama'=>'Penjadwalan kembali'
         ),
         
     );

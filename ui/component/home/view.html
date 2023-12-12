@@ -1,0 +1,38 @@
+<div class="main-content content-home">
+    <div class="mb-3">
+        <div class="button-home mb-3 me-3" ng-click="komplain.open()">
+            <span class="fa fa-comment-dots icon-home"></span>
+            <small>Komplain</small>
+        </div>
+        <div class="button-home mb-3 me-3" ng-click="overtime.open()">
+            <span class="fa fa-business-time icon-home"></span>
+            <small>Overtime AC</small>
+        </div>
+        <div class="button-home mb-3 me-3">
+            <span class="fa fa-laptop-house icon-home"></span>
+            <small>Pinjam Asset</small>
+        </div>
+     </div>
+     <div class="mb-3">
+        <div class="button-home mb-3 me-3" ng-click="idcard.open()">
+            <span class="fa fa-id-badge icon-home-card"></span>
+            <small>Kartu ID</small>
+        </div>
+        <div class="button-home mb-3 me-3" ng-click="parkir.open()">
+            <span class="fa fa-credit-card icon-home-card"></span>
+            <small>Kartu Parkir</small>
+        </div>
+        <div class="button-home mb-3 me-3" ng-click="akses.open()">
+            <span class="fa fa-passport icon-home-card"></span>
+            <small>Kartu Akses</small>
+        </div>
+     </div>   
+</div>
+
+<div alt-component="form/komplain" data-scope="komplain"></div>
+<div alt-component="form/overtime" data-scope="overtime"></div>
+<div alt-component="form/pinjam" data-scope="pinjam"></div>
+
+<div alt-component="form/idcard" data-scope="idcard"></div>
+<div alt-component="form/parkir" data-scope="parkir"></div>
+<div alt-component="form/akses" data-scope="akses"></div>
