@@ -279,7 +279,7 @@
     background-color: darkcyan;
 }
 .color-themes{
-    color:darkcyan;
+    color:#016074;
 }
 .text-black{
     color: black!important;
@@ -352,6 +352,10 @@
     padding-left:15px;
 }
 
+.form-dialog-navbar{
+    color:#016074;
+}
+
 
 @media (max-width: 767px) {
     .form-login{
@@ -371,4 +375,3 @@
         left:0;
     }
 }
-

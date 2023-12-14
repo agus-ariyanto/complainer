@@ -2,6 +2,7 @@ define(['ui/system/api'], function(){
     return ['$scope','$auth','$loading','Api',function($scope,$auth,$loading,Api){
         $scope.active=false;
         $scope.saved=false;
+        $scope.icon='';
         $scope.title='Kartu Parkir'
         /* overide parent */
         $scope.open=function(){

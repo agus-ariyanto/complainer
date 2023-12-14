@@ -2,9 +2,11 @@
     <div class="col-md-6 m-auto bg-white form-dialog-x-body">
       <div class="row form-dialog-navbar">
         <div class="col-1" ng-click="close()">
-          <span class="fa fa-arrow-left"></span>
+          <span class="fa fa-arrow-left pointer"></span>
         </div>
-        <div class="col text-center">{{title}}</div>
+        <div class="col text-center">
+            <span class="fa fa-{{icon}} pe-3"></span>{{title}}
+        </div>
       </div>
 
         <div class="mb-3">
