@@ -12,44 +12,54 @@
      
         <div class="mb-3">
             <label class="form-label"><span class="fa fa-building text-muted pe-3"></span>Office</label>
-            <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
+            <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()" required>    
         </div>
         <div class="mb-3">
             <label class="form-label"><span class="fa fa-sign text-muted pe-3"></span>Lokasi</label>
-            <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
+            <input type="text" class="form-control" ng-model="data.lokasi_nama" ng-click="lokasiDlg.open()" required>    
+        </div>
+        <div class="row mb-3">
+            <div class="col-6">
+                <label class="form-label"><span class="fa fa-calendar-day text-muted pe-1"></span>Dari Tanggal</label>
+                <input type="text" ng-model="data.awal_tanggal" class="form-control" date-time
+                auto-close="true" view="date" min-view="date" min-date="minDate"
+                max-view="month" format="dd/MM/yyyy" watch-direct-changes
+                placeholder="Mulai Overtime" required>
+            </div>
+            <div class="col-6">
+                <label class="form-label"><span class="fa fa-calendar-week text-muted pe-1"></span>Sampai Tanggal</label>
+                <input type="text" ng-model="data.akhir_tanggal" class="form-control" date-time
+                auto-close="true" view="date" min-view="date" min-date="minDate"
+                max-view="month" format="dd/MM/yyyy" watch-direct-changes
+                placeholder="Akhir Overtime" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-6">
+                <label class="form-label"><span class="fa fa-clock text-muted pe-1"></span>Dari Jam</label>
+                <input type="text" class="form-control" ng-model="data.awal_jam" placeholder="format JJ.MM" required>
+            </div>
+            <div class="col-6">
+                <label class="form-label"><span class="fa fa-stopwatch text-muted pe-1"></span>Sampai Jam</label>
+                <input type="text" class="form-control" ng-model="data.akhir_jam" placeholder="format JJ.MM" required>
+            </div>
         </div>
         <div class="mb-3">
-            <label class="form-label"><span class="fa fa-calendar-day text-muted pe-3"></span>Tanggal</label>
-            <input type="text" ng-model="data.dari_tgl" class="form-control" date-time
-            auto-close="true" view="date" min-view="date" min-date="minDate"
-            max-view="month" format="dd/MM/yyyy" watch-direct-changes
-            placeholder="Tanggal Overtime" required>
-    </div>
-    <div class="row mb-3">
-        <div class="col">
-            <label class="form-label"><span class="fa fa-clock text-muted pe-3"></span>Dari Jam</label>
-            <input type="text" class="form-control" ng-model="data.time_start" placeholder="mis : 17.00">
+            <label class="form-label"><span class="fa fa-sticky-note text-muted pe-1"></span>Catatan</label>
+            <textarea class="form-control" rows="3" ng-model="data.catatan" maxlength="120"></textarea>
+            <div class="small text-end text-muted">&nbsp;{{data.catatan_length}}</div>
         </div>
-        <div class="col">
-            <label class="form-label"><span class="fa fa-clock text-muted pe-3"></span>Dari Jam</label>
-            <input type="text" class="form-control" ng-model="data.time_stop" placeholder="mis : 17.00">
+        <div class="separator-50"></div>
+        <div class="mb-3 row">
+            <div class="col d-grid">
+            </div>
+            <div class="col d-grid">
+                <button class="btn btn-themes">Submit</button>
+            </div>
         </div>
-
-    </div>
-    <div class="mb-3">
-        <label class="form-label"><span class="fa fa-sticky-note text-muted pe-3"></span>Catatan</label>
-        <textarea class="form-control" rows="3" ng-model="data.catatan" maxlength="120"></textarea>
-        <div class="small text-end text-muted">&nbsp;{{data.catatan_length}}</div>
-    </div>
-    <div class="separator-50"></div>
-    <div class="mb-3 row">
-        <div class="col d-grid">
-        </div>
-        <div class="col d-grid">
-            <button class="btn btn-themes">Submit</button>
-        </div>
-    </div>
-    
     </div>
 </div>
 
+
+<div alt-component="search" data-scope="officeDlg"></div>
+<div alt-component="search" data-scope="lokasiDlg"></div>

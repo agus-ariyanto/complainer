@@ -3,9 +3,11 @@ define(['ui/system/api'], function(){
         $scope.active=false;
         $scope.saved=false;
         $scope.title='';
-        $scope.message='Testing';
+        $scope.icon='';
+        
         $scope.data=angular.copy($auth.user);
         $scope.open=function(){
+            $scope.saved=false;
             $scope.active=true;
         }
         $scope.close=function(){
@@ -72,7 +74,8 @@ define(['ui/system/api'], function(){
             })
             .then(function(r){
                 $auth.setUser(r.data);
-                window.location.reload();
+                $scope.saved=true;
+                $scope.close();
             });
         }
         

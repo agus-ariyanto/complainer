@@ -9,20 +9,27 @@
         </div>
       </div>
         <div class="mb-3">
-            <label class="form-label"><span class="fa fa-building text-muted pe-3"></span>Office</label>
+            <label class="form-label"><span class="fa fa-building text-muted pe-1"></span>Office</label>
             <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
         </div>
         <div class="mb-3">
-            <label class="form-label"><span class="fa fa-sign text-muted pe-3"></span>Lokasi</label>
+            <label class="form-label"><span class="fa fa-sign text-muted pe-1"></span>Lokasi</label>
             <input type="text" class="form-control" ng-model="data.lokasi_nama" ng-click="lokasiDlg.open()">    
         </div>
         <div class="mb-3">
-            <label class="form-label"><span class="fa fa-lightbulb text-muted pe-3"></span>Obyek</label>
-            <input type="text" class="form-control" ng-model="data.obyek">    
+            <label class="form-label"><span class="fa fa-shapes text-muted pe-1"></span>Aset</label>
+            <input class="form-control" ng-model="data.identitas" list="komplen-idens" placeholder="misal : Kamar Mandi">
+                <datalist id="komplen-idens">
+                    <option value="{{i}}" ng-repeat="i in idens">
+                </datalist>
         </div>
         <div class="mb-3">
-            <label class="form-label"><span class="fa fa-sticky-note text-muted pe-3"></span>Catatan</label>
-            <textarea class="form-control" rows="3" ng-model="data.catatan" maxlength="120"></textarea>
+            <label class="form-label"><span class="fa fa-lightbulb text-muted pe-1"></span>Obyek</label>
+            <input type="text" class="form-control" ng-model="data.obyek" placeholder="misal : handle pintu">    
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><span class="fa fa-sticky-note text-muted pe-1"></span>Catatan</label>
+            <textarea class="form-control" rows="3" ng-model="data.catatan" maxlength="120" placeholder="misal : sangat susah dibuka, baut copot sebelah"></textarea>
             <div class="small text-end text-muted">&nbsp;{{data.catatan_length}}</div>
         </div>
 

@@ -42,7 +42,7 @@ class Proses extends Ctrl{
         }
     }
     
-    function complain(){
+    function komplen(){
         $this->setCode(1);
         $this->index();
     }
@@ -54,12 +54,12 @@ class Proses extends Ctrl{
         $this->setCode(3);
         $this->index();
     }
-    function parkir(){
-        $this->setCode(4);
+    function akses(){
+        $this->setCode(5);
         $this->index();
     }
-    function access(){
-        $this->setCode(5);
+    function parkir(){
+        $this->setCode(4);
         $this->index();
     }
     function idcard(){
@@ -70,7 +70,6 @@ class Proses extends Ctrl{
     function insert(){
         /* item detail */
         if(empty($this->params->key('start'))) $this->params->set('start',$this->ymd);
-        // if(empty($this->params->key('stop'))) $this->params->set('stop',$this->ymd);
         $res=$this->db->insert('submission',$this->params);
 
         $this->params->set('submission_id',$res['id']);
@@ -78,11 +77,15 @@ class Proses extends Ctrl{
         $this->params->set('step_id',1);
 
         $this->params->set('user_id',$this->userdata['id']);
+        $this->params->set('approval_id',$this->userdata['atasan_id']);
+        
         $this->params->set('sbu_id',$this->userdata['sbu_id']);
 
         $res=$this->db->insert($this->model,$this->params);
         /* return proses - join */
         $this->data($this->db->id($this->model,$res['id']));
-    } 
+    }
+
+
 
 }

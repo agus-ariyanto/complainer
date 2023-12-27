@@ -10,8 +10,19 @@
       </div>
 
         <div class="mb-3">
-            <label class="form-label"><span class="fa fa-building text-muted pe-3"></span>Office</label>
+            <label class="form-label"><span class="fa fa-building text-muted pe-1"></span>Office</label>
             <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><span class="fa fa-motorcycle text-muted pe-1"></span>Kendaraan</label>
+            <input class="form-control" list="parkir-idens" placeholder="misal : Motor">
+            <datalist id="parkir-idens">
+                <option value="{{i}}" ng-repeat="i in idens">
+            </datalist>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><span class="fa fa-sign text-muted pe-1"></span>Nopol</label>
+            <input type="text" class="form-control" ng-model="data.identitas">    
         </div>
         <div>
             <div class="image-upload" ng-show="data.image">
@@ -23,7 +34,7 @@
             </div>
         </div>
         <div class="mb-3 small text-muted">
-            <em>Foto STNK</em>
+            <em>Foto Kendaraan</em>
         </div>
 
         <div class="separator-50"></div>
@@ -36,3 +47,4 @@
         </div>
     </div>
 </div>
+<div alt-component="search" data-scope="officeDlg"></div>

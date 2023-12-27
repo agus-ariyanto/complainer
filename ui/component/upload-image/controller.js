@@ -17,21 +17,17 @@ define(['ui/system/helper','ui/system/api'], function(){
             });
         }
         $scope.open=function(){
-            $scope.data.image='';
             clearCanvas();
+            $scope.data.image='';
             $scope.saved=false;
             $scope.active=true;
         }
         $scope.selectImage=function(){
             $('#photo-upload').click();
-            // console.log('click');
         }
 
         $scope.init=function(){
-            /* 
-            overide parent 
-            Api.Get(url);
-            */
+           
             return;
         }
         $scope.close=function(){
@@ -47,7 +43,7 @@ define(['ui/system/helper','ui/system/api'], function(){
         function render(src){
             var image = new Image();
             image.onload=function(){
-                var c=720;
+                var c=680;
                 var canvas = document.getElementById('temp-canvas');
                 var ar=image.width/image.height;
                 image.width=c*ar;
@@ -67,7 +63,6 @@ define(['ui/system/helper','ui/system/api'], function(){
             reader.onload=function(res){
                 render(res.target.result);
             }
-            $scope.active=true;
             reader.readAsDataURL(f);
         }
     

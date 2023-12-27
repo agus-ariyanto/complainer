@@ -1,6 +1,6 @@
-alt.application = 'Todolist';
-alt.title = 'Todolist';
-alt.description = '';
+alt.application = 'TemanSapa';
+alt.title = 'Teman Sapa';
+alt.description = 'Sistem Pelayanan Terpadu Sarana Prasarana';
 alt.version = '0.1';
 alt.environment = 'development';
 

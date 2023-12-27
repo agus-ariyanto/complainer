@@ -5,6 +5,7 @@ define(['ui/system/api'], function(){
         $scope.icon='';
         $scope.title='Komplen';
         $scope.data={}
+        $scope.idens=['Lahan','Gedung','Mobil','Motor','Meja','Kursi'];
         $scope.open=function(){
             $scope.data={}
             $scope.saved=false;
@@ -73,6 +74,14 @@ define(['ui/system/api'], function(){
                 });
             }
         }  
+        $scope.submit=function(){
+            Api.Post('proses/komplen',$scope.data)
+            .then(function(r){
+                $scope.data=r.data;
+                $scope.saved=true;
+                $scope.close();
+            });
+        }
         $scope.officeDlg.init();
 
         /*end controller*/

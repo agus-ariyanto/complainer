@@ -126,19 +126,19 @@ define(['ui/system/api'], function(){
                 }}, */
                 /* ----- */
 
-                {id:7,icon:'bell',title:'Monitoring',active:false, init:function(){
+                {id:1,icon:'bell',title:'Monitoring',active:false, init:function(){
                     $scope.closeAll();
                     $scope.history.open();
                 }},
-                {id:7,icon:'history',title:'Riwayat',active:false, init:function(){
+                {id:2,icon:'history',title:'Riwayat',active:false, init:function(){
                     $scope.closeAll();
                     $scope.history.open();
                 }},
-                {id:7,icon:'user',title:'Profil',active:false, init:function(){
+                {id:3,icon:'user',title:'Profil',active:false, init:function(){
                     $scope.closeAll();
                     $scope.history.open();
                 }},
-                {id:7,icon:'power-off',title:'Logout',active:false, init:function(){
+                {id:4,icon:'power-off',title:'Logout',active:false, init:function(){
                     $scope.closeAll();
                     $scope.history.open();
                 }}
@@ -164,8 +164,7 @@ define(['ui/system/api'], function(){
             }
         }
         $scope.nav.tabSelected=$scope.nav.tabItem[0];
-        // $scope.nav.disable=!($auth.sbu_id&&$auth.office_id&&$auth.bidang_id&&$auth.atasan_id);
-        // $scope.nav.disable=true;
+ 
 /*end controller*/
         }];
 });

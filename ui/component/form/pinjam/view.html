@@ -10,26 +10,40 @@
       </div>
         <div class="row mb-3">
             <div class="col">
-                <label><span class="fa fa-calendar-day text-muted pe-3"></span>Dari</label>
+                <label class="form-label"><span class="fa fa-calendar-day text-muted pe-1"></span>Dari Tanggal</label>
                 <input type="text" ng-model="data.dari_tgl" class="form-control" date-time
                 auto-close="true" view="date" min-view="date" min-date="minDate"
                 max-view="month" format="dd/MM/yyyy" watch-direct-changes
-                placeholder="Tanggal Overtime" required>
+                placeholder="Tanggal Pinjam" required>
             </div>
             <div class="col">
-                <label><span class="fa fa-calendar-week text-muted pe-3"></span>Sampai</label>
+                <label class="form-label"><span class="fa fa-calendar-week text-muted pe-1"></span>Sampai Tanggal</label>
                 <input type="text" ng-model="data.dari_tgl" class="form-control" date-time
                 auto-close="true" view="date" min-view="date" min-date="minDate"
                 max-view="month" format="dd/MM/yyyy" watch-direct-changes
-                placeholder="Tanggal Overtime" required>
+                placeholder="Tanggal Pengembalian" required>
             </div>
         </div>
         <div class="mb-3">
-            <label class="form-label"><span class="fa fa-shapes text-muted pe-3"></span>Barang</label>
-            <input type="text" class="form-control" ng-model="data.office_nama">    
+            <label class="form-label"><span class="fa fa-building text-muted pe-1"></span>Office</label>
+            <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
         </div>
+
         <div class="mb-3">
-            <label class="form-label"><span class="fa fa-sticky-note text-muted pe-3"></span>Catatan</label>
+            <label class="form-label"><span class="fa fa-shapes text-muted pe-1"></span>Aset</label>
+            <input class="form-control" list="idens" placeholder="misal : Gedung">
+            <datalist id="idens">
+                <option value="{{x}}" ng-repeat="x in idens">
+                </datalist>
+        </div>
+            
+        <div class="mb-3">
+            <label class="form-label"><span class="fa fa-shapes text-muted pe-1"></span>Obyek</label>
+            <input type="text" class="form-control" ng-model="data.obyek" placeholder="misal : aula">    
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label"><span class="fa fa-sticky-note text-muted pe-1"></span>Catatan</label>
             <textarea class="form-control" rows="3" ng-model="data.catatan" maxlength="120" placeholder="Catatan keperluan"></textarea>
             <div class="small text-end text-muted">&nbsp;{{data.catatan_length}}</div>
         </div>
@@ -56,3 +70,4 @@
         </div>
     </div>
 </div>
+<div alt-component="search" data-scope="officeDlg"></div>

@@ -1,34 +1,31 @@
-<div class="main-content content-home col-md-8">
-      <div class="bg-warning p-3 mb-3" ng-show="message.length" ng-init="message='Hallo Apa Kabar'">
-          <span class="fa fa-info-circle fs-3 pe-1"></span>{{message}}
-        </div>
+<div class="main-content content-home">
         <div class="row g-3">
             <div class="col-md-12">
-              <label class="form-label"><span class="fa fa-user text-muted pe-3"></span>Nama</label>
+              <label class="form-label"><span class="fa fa-user text-muted pe-1"></span>Nama</label>
               <input type="text" class="form-control" ng-model="data.nama" placeholder="Nama Lengkap" required>
             </div>
             <div class="col-md-6">
-              <label class="form-label"><span class="fa fa-user-tag text-muted pe-3"></span>Nip</label>
+              <label class="form-label"><span class="fa fa-user-tag text-muted pe-1"></span>Nip</label>
               <input type="text" class="form-control"  ng-model="data.nip" placeholder="Nomor Pegawai">
             </div>
             <div class="col-6">
-              <label class="form-label"><span class="fa fa-mobile-alt text-muted pe-3"></span>Hp</label>
+              <label class="form-label"><span class="fa fa-mobile-alt text-muted pe-1"></span>Hp</label>
               <input type="text" class="form-control"  ng-model="data.hp" placeholder="Nomor Handphone">
             </div>
             <div class="col-md-6">
-              <label class="form-label"><span class="fa fa-couch text-muted pe-3"></span>Bidang</label>
+              <label class="form-label"><span class="fa fa-couch text-muted pe-1"></span>Bidang</label>
               <input type="text" class="form-control form-control-select" ng-model="data.bidang_nama" ng-click="bidangDlg.open()" placeholder="nama bidang" readonly>
             </div>
             <div class="col-md-6">
-              <label class="form-label"><span class="fa fa-user-tie text-muted pe-3"></span>Atasan</label>
+              <label class="form-label"><span class="fa fa-user-tie text-muted pe-1"></span>Atasan</label>
               <input type="text" class="form-control form-control-select" ng-model="data.atasan_nama" ng-click="atasanDlg.open()" placeholder="nama atasan" readonly>  
             </div>
             <div class="col-md-6">
-              <label class="form-label"><span class="fa fa-bezier-curve text-muted pe-3"></span>SBU</label>
+              <label class="form-label"><span class="fa fa-bezier-curve text-muted pe-1"></span>SBU</label>
               <input type="text" class="form-control form-control-select" ng-model="data.sbu_nama" ng-click="sbuDlg.open()">
             </div>
             <div class="col-md-6">
-                <label class="form-label"><span class="fa fa-building text-muted pe-3"></span>Office</label>
+                <label class="form-label"><span class="fa fa-building text-muted pe-1"></span>Office</label>
                 <input type="text" class="form-control form-control-select" ng-model="data.office_nama" ng-click="officeDlg.open()">
             </div>
         </div>
