@@ -3,6 +3,7 @@ define(['ui/system/api'], function(){
         $scope.active=false;
         $scope.saved=false;
         $scope.icon='';
+        $scope.images=[];
         $scope.data={}
         $scope.title='Kartu ID';
 

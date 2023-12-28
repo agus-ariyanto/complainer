@@ -5,6 +5,7 @@ define(['ui/system/api'], function(){
         $scope.title='Kartu Akses';
         $scope.icon='';
         $scope.data={}
+        $scope.images=[];
         $scope.open=function(){
             $scope.active=true;
         }

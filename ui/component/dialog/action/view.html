@@ -1,0 +1,37 @@
+<div class="itr-dialog-backdrop {{active?'active':''}}">
+    <div class="col-md-6 p-3 m-auto mb-2 bg-white border border-secondary rounded-bottom small-full-width">
+  
+        <div class="mb-3">&nbsp;</div>
+        <div class="mb-3">
+            <label class="form-label">Identifikasi</label>
+            <input type="text" class="form-control"  ng-model="data.identifikasi"></input>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Obyek</label>
+            <input type="text" class="form-control"  ng-model="data.obyek"></input>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Catatan</label>
+            <textarea class="form-control" rows="3" ng-model="data.catatan" maxlength="512" placeholder="misal : sangat susah dibuka, baut copot sebelah"></textarea>
+        </div>
+
+        <div class="separator-50"></div>
+        <div class="row">
+            <div class="col-6">
+                <button type="button" class="btn btn-outline-secondary btn-sm" ng-click="close()">
+                    <span class="fa fa-arrow-left pe-3"></span>Cancel
+                </button>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn btn-danger btn-sm" ng-click="close()">
+                    <span class="fa fa-arrow-left pe-3"></span>Retiket
+                </button>
+            </div>
+            <div class="col-6 text-end">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <span class="fa fa-trash pe-3"></span>Selesai
+                </button>
+            </div>
+        </div>     
+    </div>
+</div>

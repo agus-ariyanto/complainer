@@ -10,7 +10,7 @@
       </div>
     
         <div class="mb-3">
-            <div class="image-upload" ng-show="data.image">
+            <div class="image-upload" ng-repeat="i in images">
                 <div class="icon-image-close">x</div>
                 <img ng-src="{{data.image||'assets/img/upload-foto.png'}}" class="image-upload-content">
             </div>

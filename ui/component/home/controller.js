@@ -62,12 +62,12 @@ define(['ui/system/api'], function(){
         close:function(){
             $scope.upload.active=false;
             if($scope.upload.saved){
-                if($scope.tab==1) $scope.komplen.data.image=$scope.upload.data.url;
-                if($scope.tab==2) $scope.overtime.data.image=$scope.upload.data.url;
-                if($scope.tab==3) $scope.pinjam.data.image=$scope.upload.data.url;
-                if($scope.tab==4) $scope.akses.data.image=$scope.upload.data.url;
-                if($scope.tab==5) $scope.idcard.data.image=$scope.upload.data.url;
-                if($scope.tab==6) $scope.parkir.data.image=$scope.upload.data.url;
+                if($scope.tab==1) $scope.komplen.images.push($scope.upload.data.url);
+                // if($scope.tab==2) $scope.overtime.images.push($scope.upload.data.url);
+                if($scope.tab==3) $scope.pinjam.images.push($scope.upload.data.url);
+                if($scope.tab==4) $scope.akses.images.push($scope.upload.data.url);
+                if($scope.tab==5) $scope.idcard.images.push($scope.upload.data.url);
+                if($scope.tab==6) $scope.parkir.images.push($scope.upload.data.url);
             }
         }
 

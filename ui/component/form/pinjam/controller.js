@@ -4,7 +4,8 @@ define(['ui/system/api'], function(){
         $scope.saved=false;
         $scope.icon='';
         $scope.title='Pinjam Aset';
-        $scope.idens=['Lahan','Gedung','Mobil','Motor','Meja','Kursi']
+        $scope.idens=['Lahan','Gedung','Mobil','Motor','Meja','Kursi'];
+        $scope.images=[];
         $scope.data={}
         /* overide di parent */
         $scope.open=function(){

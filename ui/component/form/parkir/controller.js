@@ -3,7 +3,8 @@ define(['ui/system/api'], function(){
         $scope.active=false;
         $scope.saved=false;
         $scope.icon='';
-        $scope.title='Kartu Parkir'
+        $scope.title='Kartu Parkir';
+        $scope.images=[];
         $scope.data={}
         $scope.idens=['Sepeda','Motor','Mobil','Bus','Truck'];
         /* overide parent */

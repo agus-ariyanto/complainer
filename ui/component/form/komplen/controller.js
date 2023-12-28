@@ -4,6 +4,7 @@ define(['ui/system/api'], function(){
         $scope.saved=false;
         $scope.icon='';
         $scope.title='Komplen';
+        $scope.images=[];
         $scope.data={}
         $scope.idens=['Lahan','Gedung','Mobil','Motor','Meja','Kursi'];
         $scope.open=function(){

@@ -2,6 +2,7 @@
 /* 
 code :  1 komplain,
         2 
+catatan : catatan untuk reject        
 */
 class TsProses extends Model{
     protected $alias='proses';
@@ -21,5 +22,6 @@ class TsProses extends Model{
         'tgl_approve'=>'DATETIME',
         'tgl_action'=>'DATETIME',
         'tgl_rate'=>'DATETIME',
+        'catatan'=>'VARCHAR(256)',
     );
 }
