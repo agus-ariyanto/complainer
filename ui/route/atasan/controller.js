@@ -1,30 +1,14 @@
 define(['ui/system/api'], function(){
     return ['$scope','$auth','$loading','Api',function($scope,$auth,$loading,Api){
-        $scope.home={
-            active:true,
-            init:function(){
-                Api.Get('proses',{
-                    user_id:{equal:$auth.user.id},
-                    step_id:{lte:3},
-                    and:1
-                })
-                .then(function(r){
-                    $scope.home.items=r.data;
-                });
-            }
-        }
-        $scope.monitoring={}
-        $scope.closeAll=function(){
-            $scope.monitoring.active=false;
-            $scope.home.active=false;
-        }
+    
+        
         $scope.nav={
             disable:false,
             tabItem:[
                 
-                {id:0,icon:'home',title:'Home',active:true, init:function(){
+                {id:0,icon:'user-check',title:'Approval',active:true, init:function(){
                     $scope.closeAll();
-                    $scope.home.active=true;
+                    $scope.approval.open();
                 }},
                 /* lihat model tskode */
                /*  {id:1,icon:'comment-dots',title:'Komplain',active:false, init:function(){
@@ -55,9 +39,9 @@ define(['ui/system/api'], function(){
 
                 {id:1,icon:'bell',title:'Monitoring',active:false, init:function(){
                     $scope.closeAll();
-                    $scope.monitoring.active=true;
+                    $scope.history.open();
                 }},
-                {id:2,icon:'history',title:'Riwayat',active:false, init:function(){
+                {id:2,icon:'user-clock',title:'Riwayat User',active:false, init:function(){
                     $scope.closeAll();
                     $scope.history.open();
                 }},

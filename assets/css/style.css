@@ -190,34 +190,62 @@
       /* text-shadow:1px 1px 1px #000; */
 }
 
+/* 
+  <div class="image-upload-container">
+            <div class="image-upload" ng-repeat="i in images">
+                <div class="icon-image-close">x</div>
+                <img ng-src="{{i}}" class="image-upload-small">
+            </div>
+            <div class="image-upload-plus" ng-show="data.images.length>4">
+                <img src="assets/img/upload-foto.png" class="image-upload-small" ng-click="uploadImage()">
+            </div>
+        </div>
+
+*/
+.image-upload-container{
+    width:100%;
+    /* overflow-x: scroll; */
+    display: flex;
+}
 .image-upload{
     position: relative;
     display: inline-block;
-    width:50%;
-    height:auto;
-    padding:10px;
+    width:124px;
+    height: 124px;
+    padding:1px;
     /* background-color: #666; */
-    border:1px dashed #bbb;
-
+    /* border:1px dashed #bbb; */
+}
+.image-upload-content{
+    width:122px;
+    height:122px;
+    object-fit: cover;
+    cursor: pointer;
 }
 .image-upload-plus{
     position: relative;
     display: inline-block;
     width:128px;
-    height:auto;
-    padding:10px;
+    height:128px;
+    padding:2px;
     /* background-color: #666; */
     border:1px dashed #bbb;
 }
-.image-upload-content{
-    width:100%;
-    height:auto;
+.image-upload-small{
+    width:128px;
+    height:128px;
+    cursor: pointer;
+    object-fit: cover;
+}
+.image-upload-button{
+    width: 100%;
+    height: auto;
     cursor: pointer;
 }
 .icon-image-close{
     position: absolute;
-    right: 6px;
-    top:6px; 
+    right: 2px;
+    top:2px; 
     text-align: center;
     background-color: red;
     color: white;
@@ -391,4 +419,8 @@
         width:64px;
         height:64px;
     }
+}
+.img-full-width{
+    width:100%;
+    height: auto;
 }

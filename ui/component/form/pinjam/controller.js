@@ -24,6 +24,9 @@ define(['ui/system/api'], function(){
             if(e.length>0) $scope.data.catatan_length=(120-e.length)+' Karakter tersisa';
         });
         $scope.submit=function(){
+            $scope.data.tgl_awal=Date.parse($scope.data.awal_tgl).toString('yyyy-MM-dd');
+            $scope.data.tgl_akhir=Date.parse($scope.data.akhir_tgl).toString('yyyy-MM-dd');
+            $scope.data.image=$scope.images.join(',');
             $scope.data.user_id=$auth.user.id;
             $scope.data.sub_id=$auth.user.sbu_id;
             Api.Post('proses/pinjam',$scope.data)
@@ -50,7 +53,28 @@ define(['ui/system/api'], function(){
                 });
             }
         }
-        $scope.officeDlg.init();            
+        $scope.asetDlg={
+            close:function(){
+                if($scope.asetDlg.saved){
+                    $scope.data.aset_nama=$scope.asetDlg.data.nama;
+                    $scope.data.aset_id=$scope.asetDlg.data.id;
+                }
+                $scope.asetDlg.active=false;
+            },
+            init:function(){
+                // if(!$scope.data.office_id) return;
+                Api.Get('aset',{
+                    order:'nama ASC'
+                })
+                .then(function(r){
+                    $scope.asetDlg.items=r.data;
+                });
+            }
+        }
+        $scope.delImage=function(val){
+            var i=$scope.images.indexOf(val);
+            if(i>=0) $scope.images.splice(i,1);
+        }
 
         
         /*end controller*/

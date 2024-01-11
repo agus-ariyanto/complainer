@@ -9,7 +9,7 @@ define(['ui/system/helper','ui/system/api'], function(){
        
         
         $scope.open=function(val){
-            if(!$scope.items.length) $scope.init();
+            if($scope.items.length<1) $scope.init();
             $scope.search_text='';
             $scope.data={};
             $scope.saved=false;
@@ -22,13 +22,7 @@ define(['ui/system/helper','ui/system/api'], function(){
             $scope.saved=true;
             $scope.close();
         }
-        $scope.getData=function(url,data){
-            data=data||{order:'nama ASC'};
-            Api.Get(url,data)
-            .then(function(r){
-                $scope.items=r.data;
-            });
-        }
+       
         $scope.close=function(){
             $scope.active=false;
         }

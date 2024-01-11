@@ -7,27 +7,31 @@ class TsStep extends Model{
     protected $firstdata=array(
         array(
             'id'=>1,
-            'nama'=>'Menunggu persetujuan'
+            'nama'=>'Proses Pengajuan'
         ),
         array(
             'id'=>2,
-            'nama'=>'Sedang Ditindak-lanjuti',
+            'nama'=>'Dalam proses',
         ),
         array(
             'id'=>3,
-            'nama'=>'Selesai',
+            'nama'=>'Sedang ditindak lanjuti',
         ),
         array(
             'id'=>4,
-            'nama'=>'Rated',
+            'nama'=>'Telah dikonfirmasi',
         ),
         array(
-            'id'=>5,
-            'nama'=>'Di Tolak Atasan',
+            'id'=>10,
+            'nama'=>'Selesai',
         ),
         array(
-            'id'=>6,
-            'nama'=>'Penjadwalan kembali'
+            'id'=>11,
+            'nama'=>'Ditolak Atasan',
+        ),
+        array(
+            'id'=>12,
+            'nama'=>'Ditolak PIC',
         ),
         
     );

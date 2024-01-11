@@ -3,10 +3,9 @@ define(['ui/system/api'], function(){
         $scope.active=false;
         $scope.saved=false;
         $scope.icon='';
-        $scope.title='Komplen';
+        $scope.title='komplain';
         $scope.images=[];
         $scope.data={}
-        $scope.idens=['Lahan','Gedung','Mobil','Motor','Meja','Kursi'];
         $scope.open=function(){
             $scope.data={}
             $scope.saved=false;
@@ -24,6 +23,10 @@ define(['ui/system/api'], function(){
                 $scope.saved=true;
                 $scope.close();
             });
+        }
+        $scope.delImage=function(val){
+            var i=$scope.images.indexOf(val);
+            if(i>=0) $scope.images.splice(i,1);
         }
         
         $scope.uploadImage=function(){
@@ -65,7 +68,6 @@ define(['ui/system/api'], function(){
                 $scope.lokasiDlg.active=false;
             },
             init:function(){
-                // if(!$scope.data.office_id) return;
                 Api.Get('lokasi',{
                     office_id:{equal:$scope.data.office_id},
                     order:'nama ASC'
@@ -74,16 +76,37 @@ define(['ui/system/api'], function(){
                     $scope.lokasiDlg.items=r.data;
                 });
             }
-        }  
+        }
+        $scope.asetDlg={
+            close:function(){
+                if($scope.asetDlg.saved){
+                    $scope.data.aset_nama=$scope.asetDlg.data.nama;
+                    $scope.data.aset_id=$scope.asetDlg.data.id;
+                }
+                $scope.asetDlg.active=false;
+            },
+            init:function(){
+                // if(!$scope.data.office_id) return;
+                Api.Get('aset',{
+                    order:'nama ASC'
+                })
+                .then(function(r){
+                    $scope.asetDlg.items=r.data;
+                });
+            }
+        }
+
         $scope.submit=function(){
-            Api.Post('proses/komplen',$scope.data)
+            $scope.data.image=$scope.images.join(',');
+            $scope.data.sub_id=$auth.user.sbu_id;
+            $scope.data.user_id=$auth.user.id;
+            Api.Post('proses/komplain',$scope.data)
             .then(function(r){
                 $scope.data=r.data;
                 $scope.saved=true;
                 $scope.close();
             });
         }
-        $scope.officeDlg.init();
 
         /*end controller*/
     }];

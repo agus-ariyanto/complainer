@@ -11,14 +11,14 @@
         <div class="row mb-3">
             <div class="col">
                 <label class="form-label"><span class="fa fa-calendar-day text-muted pe-1"></span>Dari Tanggal</label>
-                <input type="text" ng-model="data.dari_tgl" class="form-control" date-time
+                <input type="text" ng-model="data.awal_tgl" class="form-control" date-time
                 auto-close="true" view="date" min-view="date" min-date="minDate"
                 max-view="month" format="dd/MM/yyyy" watch-direct-changes
                 placeholder="Tanggal Pinjam" required>
             </div>
             <div class="col">
                 <label class="form-label"><span class="fa fa-calendar-week text-muted pe-1"></span>Sampai Tanggal</label>
-                <input type="text" ng-model="data.dari_tgl" class="form-control" date-time
+                <input type="text" ng-model="data.akhir_tgl" class="form-control" date-time
                 auto-close="true" view="date" min-view="date" min-date="minDate"
                 max-view="month" format="dd/MM/yyyy" watch-direct-changes
                 placeholder="Tanggal Pengembalian" required>
@@ -28,18 +28,19 @@
             <label class="form-label"><span class="fa fa-building text-muted pe-1"></span>Office</label>
             <input type="text" class="form-control" ng-model="data.office_nama" ng-click="officeDlg.open()">    
         </div>
-
+        
         <div class="mb-3">
             <label class="form-label"><span class="fa fa-shapes text-muted pe-1"></span>Aset</label>
-            <input class="form-control" list="idens" placeholder="misal : Gedung">
-            <datalist id="idens">
-                <option value="{{x}}" ng-repeat="x in idens">
-                </datalist>
-        </div>
-            
+            <input type="text" class="form-control" ng-model="data.aset_nama" ng-click="asetDlg.open()">    
+        </div>  
+        
         <div class="mb-3">
-            <label class="form-label"><span class="fa fa-shapes text-muted pe-1"></span>Obyek</label>
-            <input type="text" class="form-control" ng-model="data.obyek" placeholder="misal : aula">    
+            <label class="form-label"><span class="fa fa-lightbulb text-muted pe-1"></span>Barang/Obyek</label>
+            <input type="text" class="form-control" ng-model="data.obyek">    
+        </div>    
+        <div class="mb-3">
+            <label class="form-label"><span class="fa fa-map-marker-alt text-muted pe-1"></span>Lokasi Tujuan</label>
+            <input type="text" class="form-control" ng-model="data.tujuan" placeholder="misal : aula mampang">    
         </div>
 
         <div class="mb-3">
@@ -50,10 +51,10 @@
 
         <div>
             <div class="image-upload" ng-repeat="i in images">
-                <div class="icon-image-close">x</div>
-                <img ng-src="{{data.image||'assets/img/upload-foto.png'}}" class="image-upload-content">
+                <div class="icon-image-close" ng-click="delImage(i)">x</div>
+                <img ng-src="{{i}}" class="image-upload-content" ng-click="showImage(i)">
             </div>
-            <div class="image-upload-plus" ng-show="!data.image">
+            <div class="image-upload-plus" ng-show="images.length<4">
                 <img ng-src="{{data.image||'assets/img/upload-foto.png'}}" class="image-upload-content" ng-click="uploadImage()">
             </div>
         </div>
@@ -65,9 +66,10 @@
             <div class="col d-grid">
             </div>
             <div class="col d-grid">
-                <button class="btn btn-themes">Submit</button>
+                <button class="btn btn-themes" ng-click="submit()">Submit</button>
             </div>
         </div>
     </div>
 </div>
 <div alt-component="search" data-scope="officeDlg"></div>
+<div alt-component="search" data-scope="asetDlg"></div>

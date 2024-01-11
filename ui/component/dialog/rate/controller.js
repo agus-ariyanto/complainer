@@ -1,8 +1,10 @@
 define(['ui/system/helper'], function(){
     return ['$scope','Helper', function($scope,Helper){
 
-        $scope.active=true;
-        $scope.data={};
+        $scope.active=false;
+        $scope.data={
+            ulasan:''
+        };
         
         $scope.submit=function(){
           $scope.saved=true;

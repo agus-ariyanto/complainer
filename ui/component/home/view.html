@@ -1,8 +1,8 @@
 <div class="main-content content-home">
     <div class="mb-3">
-        <div class="button-home mb-3 me-3" ng-click="komplen.open()">
-            <span class="fa fa-{{komplen.icon}} icon-home"></span>
-            <small>{{komplen.title}}</small>
+        <div class="button-home mb-3 me-3" ng-click="komplain.open()">
+            <span class="fa fa-{{komplain.icon}} icon-home"></span>
+            <small>{{komplain.title}}</small>
         </div>
         <div class="button-home mb-3 me-3" ng-click="overtime.open()">
             <span class="fa fa-{{overtime.icon}} icon-home"></span>
@@ -29,11 +29,12 @@
      </div>   
 </div>
 
-<div alt-component="form/komplen" data-scope="komplen"></div>
+<div alt-component="form/komplain" data-scope="komplain"></div>
 <div alt-component="form/overtime" data-scope="overtime"></div>
 <div alt-component="form/pinjam" data-scope="pinjam"></div>
 
 <div alt-component="form/idcard" data-scope="idcard"></div>
 <div alt-component="form/parkir" data-scope="parkir"></div>
 <div alt-component="form/akses" data-scope="akses"></div>
-<div alt-component="upload-image" data-scope="upload"></div>
+<div alt-component="dialog/upload-image" data-scope="upload"></div>
+<div alt-component="dialog/show-image" data-scope="showImg"></div>

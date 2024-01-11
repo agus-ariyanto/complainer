@@ -37,6 +37,7 @@ define(['ui/system/api'], function(){
         $scope.submit=function(){
             $scope.data.user_id=$auth.user.id;
             $scope.data.sub_id=$auth.user.sbu_id;
+            $scope.data.image=$scope.images.join(',');
             $scope.data.identitas='kartu parkir';
             Api.Post('proses/parkir',$scope.data)
             .then(function(r){
@@ -45,8 +46,11 @@ define(['ui/system/api'], function(){
                 $scope.close();
             });
         }
-      
-        $scope.officeDlg.init();
+        $scope.delImage=function(val){
+            var i=$scope.images.indexOf(val);
+            if(i>=0) $scope.images.splice(i,1);
+        }
+        
         /*end controller*/
     }];
 });

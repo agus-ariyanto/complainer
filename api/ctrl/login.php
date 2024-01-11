@@ -156,21 +156,22 @@ class Login extends Base{
         return false;
     }
 
+/*     
     function ldaptest(){
-        // $ico='iconpln.co.id';
-        // $dn = 'DC=iconpln,DC=co,DC=id';
-        // $user=explode('@',$this->params->key('email'))[0];
-        // $pwd=$this->params->key('password');
-        //
-        // $ldap=ldap_connect('ldap://'.$ico.':389');
-        //  ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
-        //  ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
-        //  $bind=ldap_bind($ldap,$user.'@'.$ico,$pwd);
-        //  if($bind){
-        //      $this->data('Ok');
-        //      return true;
-        //  }
-        //  ldap_unbind($ldap);
+        $ico='iconpln.co.id';
+        $dn = 'DC=iconpln,DC=co,DC=id';
+        $user=explode('@',$this->params->key('email'))[0];
+        $pwd=$this->params->key('password');
+        
+        $ldap=ldap_connect('ldap://'.$ico.':389');
+         ldap_set_option($ldap, LDAP_OPT_REFERRALS, 0);
+         ldap_set_option($ldap, LDAP_OPT_PROTOCOL_VERSION, 3);
+         $bind=ldap_bind($ldap,$user.'@'.$ico,$pwd);
+         if($bind){
+             $this->data('Ok');
+             return true;
+         }
+         ldap_unbind($ldap);
     }
     function tabletest(){
         $a=array('action','auth','bidang','code','grup','lokasi','office','proses','rate','sbu','step','submission');
@@ -181,5 +182,13 @@ class Login extends Base{
         }
         $this->data($b);
     }
+    function ticket(){
+        
+        
+        $cm=new CmFuncts;
+        $this->data($cm->createTicket());
+    }
+ */
+
 }
 

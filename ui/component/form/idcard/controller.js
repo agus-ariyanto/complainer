@@ -17,7 +17,12 @@ define(['ui/system/api'], function(){
         $scope.uploadImage=function(){
             return;
         }
+        $scope.delImage=function(val){
+            var i=$scope.images.indexOf(val);
+            if(i>=0) $scope.images.splice(i,1);
+        }
         $scope.submit=function(){
+            $scope.data.image=$scope.images.join(',');
             $scope.data.user_id=$auth.user.id;
             $scope.data.sub_id=$auth.user.sbu_id;
             $scope.data.identitas='kartu id';

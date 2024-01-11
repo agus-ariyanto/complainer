@@ -10,6 +10,7 @@ class TsSubmission extends Model{
         'jam_awal'=>'TIME',
         'jam_akhir'=>'TIME',
         'identitas'=>'VARCHAR(64)',
+        'tujuan'=>'VARCHAR(128)',
         'obyek'=>'VARCHAR(128)',
         'catatan'=>'VARCHAR(128)',
         'image'=>'VARCHAR(1024)',

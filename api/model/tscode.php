@@ -9,7 +9,7 @@ class TsCode extends Model{
     protected $firstdata=array(
         array(
             'id'=>1,
-            'nama'=>'Komplen',
+            'nama'=>'komplain',
             'icon'=>'comment-dots',
         ),
         array(

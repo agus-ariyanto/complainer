@@ -21,14 +21,14 @@
         <div class="row mb-3">
             <div class="col-6">
                 <label class="form-label"><span class="fa fa-calendar-day text-muted pe-1"></span>Dari Tanggal</label>
-                <input type="text" ng-model="data.awal_tanggal" class="form-control" date-time
+                <input type="text" ng-model="data.awal_tgl" class="form-control" date-time
                 auto-close="true" view="date" min-view="date" min-date="minDate"
                 max-view="month" format="dd/MM/yyyy" watch-direct-changes
                 placeholder="Mulai Overtime" required>
             </div>
             <div class="col-6">
                 <label class="form-label"><span class="fa fa-calendar-week text-muted pe-1"></span>Sampai Tanggal</label>
-                <input type="text" ng-model="data.akhir_tanggal" class="form-control" date-time
+                <input type="text" ng-model="data.akhir_tgl" class="form-control" date-time
                 auto-close="true" view="date" min-view="date" min-date="minDate"
                 max-view="month" format="dd/MM/yyyy" watch-direct-changes
                 placeholder="Akhir Overtime" required>
@@ -37,11 +37,11 @@
         <div class="row mb-3">
             <div class="col-6">
                 <label class="form-label"><span class="fa fa-clock text-muted pe-1"></span>Dari Jam</label>
-                <input type="text" class="form-control" ng-model="data.awal_jam" placeholder="format JJ.MM" required>
+                <input type="time" class="form-control" ng-model="data.awal_jam" placeholder="misal: 09.05" required>
             </div>
             <div class="col-6">
                 <label class="form-label"><span class="fa fa-stopwatch text-muted pe-1"></span>Sampai Jam</label>
-                <input type="text" class="form-control" ng-model="data.akhir_jam" placeholder="format JJ.MM" required>
+                <input type="time" class="form-control" ng-model="data.akhir_jam" placeholder="misal: 12.05" required>
             </div>
         </div>
         <div class="mb-3">
@@ -54,7 +54,7 @@
             <div class="col d-grid">
             </div>
             <div class="col d-grid">
-                <button class="btn btn-themes">Submit</button>
+                <button class="btn btn-themes" ng-click="submit()">Submit</button>
             </div>
         </div>
     </div>
