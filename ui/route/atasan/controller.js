@@ -74,6 +74,9 @@ define(['ui/system/api'], function(){
  */                
             }
         }
+        $scope.showImg={
+            
+        }
         $scope.nav.tabSelected=$scope.nav.tabItem[0];
  
 /*end controller*/

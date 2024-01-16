@@ -44,7 +44,7 @@ class Proses extends Ctrl{
     
     function komplain(){
         $this->setCode(1);
-        $this->params->set('step_id',3);
+        $this->params->set('step_id',2);
         $this->index();
     }
     function overtime(){
@@ -81,7 +81,7 @@ class Proses extends Ctrl{
 
         /* ticket numerator */
         $cf=new CmFuncts;
-        $this->params->set('tiket',$cf->createTicket());
+        $this->params->set('tiket',$cf->createTicket($this->params->key('code_id')));
         
         $this->params->set('user_id',$this->userdata['id']);
         $this->params->set('approval_id',$this->userdata['atasan_id']);

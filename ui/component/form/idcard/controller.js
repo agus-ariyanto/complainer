@@ -25,6 +25,8 @@ define(['ui/system/api'], function(){
             $scope.data.image=$scope.images.join(',');
             $scope.data.user_id=$auth.user.id;
             $scope.data.sub_id=$auth.user.sbu_id;
+            $scope.data.office_id=$auth.user.office_id;
+            
             $scope.data.identitas='kartu id';
             
             Api.Post('proses/idcard',$scope.data)

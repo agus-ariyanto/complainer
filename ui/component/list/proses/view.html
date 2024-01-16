@@ -2,15 +2,21 @@
       
     <div class="mb-3 border-bottom py-2">
         <div>
-            <div class="fs-5 color-themes">
-                <strong>komplain</strong>
-            </div>
-            <div class="row mb-3 small">
-                <div class="col-12">
-                    <span class="fa fa-user text-muted pe-2"></span>Agus Ariyanto
+            <div class="row fs-5 color-themes">
+                <div class="col-6 col-md-3">
+                    <strong>Komplain</strong>
                 </div>
-                <div class="col-12">
+                <div class="col-6 col-md-9">
+                    <strong>BM-1240112023</strong>
+                </div>
+            </div>
+
+            <div class="row mb-3 small">
+                <div class="col-6 col-md-3">
                     <span class="fa fa-calendar-day text-muted pe-2"></span>12/02/2023
+                </div>
+                <div class="col-6 col-md-9">
+                    <span class="fa fa-user text-muted pe-2"></span>Agus Ariyanto
                 </div>
                 <div class="col-6 col-md-3">
                     <span class="fa fa-building text-muted pe-1"></span>Jamsostek
@@ -29,10 +35,10 @@
                 </div>
             </div>
             <div>
-                <img src="assets/img/sample/meja-makan.jpg" class="img-tiny pointer me-3 mb-3">
-                <img src="assets/img/sample/pintu.jpg" class="img-tiny pointer me-3 mb-3">
-                <img src="assets/img/sample/pintu-1.jpg" class="img-tiny pointer me-3 mb-3">
-                <img src="assets/img/sample/plafon.jpg" class="img-tiny pointer me-3 mb-3">
+                <img src="assets/img/sample/meja-makan.jpg" class="img-tiny pointer me-3 mb-3" ng-click="showImg.open('assets/img/sample/meja-makan.jpg')">
+                <img src="assets/img/sample/pintu.jpg" class="img-tiny pointer me-3 mb-3" ng-click="showImg.open('assets/img/sample/pintu.jpg')">
+                <img src="assets/img/sample/pintu-1.jpg" class="img-tiny pointer me-3 mb-3" ng-click="showImg.open('assets/img/sample/pintu-1.jpg')">
+                <img src="assets/img/sample/plafon.jpg" class="img-tiny pointer me-3 mb-3" ng-click="showImg.open('assets/img/sample/plafon.jpg')">
             </div>
         </div>
         <div class="row">
@@ -138,3 +144,4 @@
     </div>
 
 </div>
+<div alt-component="dialog/show-image" data-scope="showImg"></div>

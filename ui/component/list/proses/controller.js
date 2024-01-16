@@ -5,6 +5,12 @@ define(['ui/system/api'], function(){
         $scope.title='';
         $scope.icon='';
         $scope.items=[];
+        $scope.showImg={
+            open:function(url){
+                console.log('click');
+            },
+            active:true
+        }
         $scope.open=function(){
             $scope.active=true;
         }
@@ -20,7 +26,6 @@ define(['ui/system/api'], function(){
                 }
             }
          }
-         
          $scope.init=function(){
  
          }

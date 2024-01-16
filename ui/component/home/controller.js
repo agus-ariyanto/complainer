@@ -28,6 +28,9 @@ define(['ui/system/api'], function(){
             uploadImage:function(){
                 $scope.tab=3;
                 $scope.upload.open();
+            },
+            showImage:function(v){
+                $scope.showImg.open(v);
             }
         }
         $scope.akses={
@@ -37,6 +40,9 @@ define(['ui/system/api'], function(){
             uploadImage:function(){
                 $scope.tab=4;
                 $scope.upload.open();
+            },
+            showImage:function(v){
+                $scope.showImg.open(v);
             }
         }
         
@@ -47,6 +53,9 @@ define(['ui/system/api'], function(){
             uploadImage:function(){
                 $scope.tab=5;
                 $scope.upload.open();
+            },
+            showImage:function(v){
+                $scope.showImg.open(v);
             }
         }
         $scope.parkir={
@@ -56,6 +65,9 @@ define(['ui/system/api'], function(){
             uploadImage:function(){
                 $scope.tab=6;
                 $scope.upload.open();
+            },
+            showImage:function(v){
+                $scope.showImg.open(v);
             }
         }
         $scope.tab=0;

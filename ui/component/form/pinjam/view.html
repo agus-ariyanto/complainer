@@ -55,7 +55,7 @@
                 <img ng-src="{{i}}" class="image-upload-content" ng-click="showImage(i)">
             </div>
             <div class="image-upload-plus" ng-show="images.length<4">
-                <img ng-src="{{data.image||'assets/img/upload-foto.png'}}" class="image-upload-content" ng-click="uploadImage()">
+                <img src="assets/img/upload-foto.png" class="image-upload-content" ng-click="uploadImage()">
             </div>
         </div>
         <div class="small text-muted">
@@ -64,6 +64,7 @@
         <div class="separator-50"></div>
         <div class="mb-3 row">
             <div class="col d-grid">
+                <button class="btn btn-light" ng-click="close()">Cancel</button>
             </div>
             <div class="col d-grid">
                 <button class="btn btn-themes" ng-click="submit()">Submit</button>
