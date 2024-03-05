@@ -73,7 +73,7 @@ define(['ui/system/api'], function(){
         $scope.tab=0;
         
         $scope.upload={
-            close:function(){
+           /*  close:function(){
                 $scope.upload.active=false;
                 if($scope.upload.saved){
                     if($scope.tab==1) $scope.komplain.images.push($scope.upload.data.url);
@@ -83,7 +83,7 @@ define(['ui/system/api'], function(){
                     if($scope.tab==5) $scope.idcard.images.push($scope.upload.data.url);
                     if($scope.tab==6) $scope.parkir.images.push($scope.upload.data.url);
                 }
-            }
+            } */
             
         }
         $scope.showImg={}    

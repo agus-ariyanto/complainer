@@ -3,10 +3,10 @@ define(['ui/system/api','ui/system/helper'], function(){
         $scope.helper=Helper;
         $scope.items=[];
         $scope.showImg={}
-        $scope.reject={
+        $scope.rate={
             close:function(){
-                $scope.reject.active=false;
-                if($scope.reject.saved)
+                $scope.rate.active=false;
+                if($scope.rate.saved)
                     $scope.init();
             }
         }
@@ -20,17 +20,21 @@ define(['ui/system/api','ui/system/helper'], function(){
             }
         }
          $scope.init=function(){
-             var w={}
+             var w={
+                 user_id:{equal:$auth.user.id},
+                 step_id:{lte:4},
+                 and:1
+                }
              if($auth.user.grup_id<2) 
                 w={
                     approval_id:{equal:$auth.user.id},
-                    step_id:{equal:1},
+                    step_id:{lte:4},
                     and:1
                 }
              if($auth.user.grup_id==3) 
                 w={
                     pic_id:{equal:$auth.user.id},
-                    step_id:{in:'2,3'},
+                    step_id:{lte:4},
                     and:1
                 }
               Api.Get('proses',w)
@@ -39,30 +43,6 @@ define(['ui/system/api','ui/system/helper'], function(){
                   $scope.parseImages();
               });      
          }
-         $scope.approve=function(val){
-             Api.Post('proses/approve/'+val.id)
-             .then(function(r){
-                 $scope.init();
-             });
-         }
-         $scope.tindaklanjut=function(){
-             Api.Post('proses/tindaklanjut'+val.id)
-             .then(function(r){
-                 $scope.init();
-             });
-         }
-         $scope.tindaklanjut=function(){
-            Api.Post('proses/tindaklanjut'+val.id)
-            .then(function(r){
-                $scope.init();
-            });
-        }
-        $scope.selesai=function(){
-            Api.Post('proses/selesai'+val.id)
-            .then(function(r){
-                $scope.init();
-            });
-        }
 
         /*end controller*/
     }];

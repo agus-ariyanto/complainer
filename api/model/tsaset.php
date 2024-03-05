@@ -11,15 +11,11 @@ class TsAset extends Model{
         ),
         array(
             'id'=>2,
-            'nama'=>'non elektronik',
+            'nama'=>'furniture',
         ),
         array(
             'id'=>3,
-            'nama'=>'bangunan',
-        ),
-        array(
-            'id'=>4,
-            'nama'=>'aset bergerak',
+            'nama'=>'sarana - prasarana',
         ),
     );
 }

@@ -1,10 +1,17 @@
-<div alt-component="dialog/reject" data-scope="reject"></div>
+<div alt-component="dialog/rate" data-scope="rate"></div>
 <div class="main-content content-home">
     <div class="row">
         <div class="col-12 col-md-6 border-bottom py-3" ng-repeat="i in items">
             
             <div class="fs-5 text-themes text-uppercase">
                  <strong>{{i.code_nama}} - {{i.tiket}}</strong>
+            </div>
+            <div class="small" ng-if="i.step_id>=10">
+                <span class="fa fa-star {{i.rate_star>=1?'text-warning':'text-muted'}}"></span>  
+                <span class="fa fa-star {{i.rate_star>=2?'text-warning':'text-muted'}}"></span>  
+                <span class="fa fa-star {{i.rate_star>=3?'text-warning':'text-muted'}}"></span>  
+                <span class="fa fa-star {{i.rate_star>=4?'text-warning':'text-muted'}}"></span>  
+                <span class="fa fa-star {{i.rate_star>=5?'text-warning':'text-muted'}}"></span>  
             </div>
             <div class="mb-3">
                 {{i.step_nama}}
@@ -56,27 +63,12 @@
                 </div> 
             </div>
             
-            <div class="text-end" ng-if="i.step_id==1">
-                <button class="btn btn-primary btn-sm" ng-click="reject.open(i)">
-                    <span class="fa fa-trash-alt pe-2"></span>Reject
-                </button> 
-                <button class="btn btn-primary btn-sm" ng-click="approve(i)">
-                    <span class="fa fa-handshake pe-2"></span>Approve
+            <div class="text-end" ng-if="i.step_id==4">
+                <button class="btn btn-primary btn-sm" ng-click="rate.open(i)">
+                    <span class="fa fa-handshake pe-2"></span>Konfirmasi Selesai
                 </button> 
             </div>
-            <div class="text-end" ng-if="i.step_id==2">
-                <button class="btn btn-primary btn-sm" ng-click="reject.open(i)">
-                    <span class="fa fa-trash-alt pe-2"></span>Reject
-                </button> 
-                <button class="btn btn-primary btn-sm" ng-click="tindaklanjut(i)">
-                    <span class="fa fa-handshake pe-2"></span>Tindak Lanjut
-                </button> 
-            </div>
-            <div class="text-end" ng-if="i.step_id==3">
-                <button class="btn btn-primary btn-sm" ng-click="selesai(i)">
-                    <span class="fa fa-handshake pe-2"></span>Selesai
-                </button> 
-            </div>
+            
         </div>
     </div>
 </div>

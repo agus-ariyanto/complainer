@@ -1,18 +1,34 @@
-define(['ui/system/helper'], function(){
-    return ['$scope','Helper', function($scope,Helper){
+define(['ui/system/api','ui/system/helper'], function(){
+    return ['$scope','Api','Helper', function($scope,Api,Helper){
 
         $scope.active=false;
         $scope.data={
+            star:0,
             ulasan:''
-        };
+        }
         
         $scope.submit=function(){
+
           $scope.saved=true;
           $scope.cancel();
         }
-        $scope.bintang=0;
         
-      
+        $scope.open=function(val){
+            $scope.data={
+                star:0,
+                ulasan:'',
+                proses_id:val.id
+            }
+            $scope.saved=false;
+            $scope.active=true;
+        }
+        $scope.submit=function(){
+            Api.Post('proses/rate',$scope.data)
+            .then(function(r){
+                $scope.saved=true;
+                $scope.close();
+            });
+        }
 
         $scope.close=function(){
             $scope.active=false;

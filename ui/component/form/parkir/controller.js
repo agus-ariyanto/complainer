@@ -38,7 +38,6 @@ define(['ui/system/api'], function(){
             $scope.data.user_id=$auth.user.id;
             $scope.data.sub_id=$auth.user.sbu_id;
             $scope.data.image=$scope.images.join(',');
-            $scope.data.identitas='kartu parkir';
             Api.Post('proses/parkir',$scope.data)
             .then(function(r){
                 $scope.data=r.data;

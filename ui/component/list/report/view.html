@@ -1,134 +1,45 @@
+
 <div class="main-content content-home">
-      
-    <div class="mb-3 border-bottom py-2">
-        <div>
-            <div class="fs-5 color-themes">
-                <strong>komplain</strong>
-            </div>
-            <div class="row mb-3 small">
-                <div class="col-12">
-                    <span class="fa fa-user text-muted pe-2"></span>Agus Ariyanto
-                </div>
-                <div class="col-12">
-                    <span class="fa fa-calendar-day text-muted pe-2"></span>12/02/2023
-                </div>
-                <div class="col-6 col-md-3">
-                    <span class="fa fa-building text-muted pe-1"></span>Jamsostek
-                </div>
-                <div class="col-6 col-md-9">
-                    <span class="fa fa-sign text-muted pe-1"></span>Wing Utara
-                </div>
-                <div class="col-6 col-md-3">
-                    <span class="fa fa-shapes text-muted pe-2"></span>Meja Pijat
-                </div>
-                <div class="col-6 col-md-9">
-                    <span class="fa fa-lightbulb text-muted pe-2"></span>Kaki Meja
-                </div>
-                <div class="col-12">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius doloribus rerum sequi reiciendis minima iure ea, nesciunt aliquid esse officia nostrum temporibus perspiciatis nobis possimus, iusto ipsa facere eveniet officiis!
-                </div>
-            </div>
-            <div>
-                <img src="assets/img/sample/meja-makan.jpg" class="img-tiny pointer me-3 mb-3">
-                <img src="assets/img/sample/pintu.jpg" class="img-tiny pointer me-3 mb-3">
-                <img src="assets/img/sample/pintu-1.jpg" class="img-tiny pointer me-3 mb-3">
-                <img src="assets/img/sample/plafon.jpg" class="img-tiny pointer me-3 mb-3">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6"></div>
-            <div class="col-6 text-end">
-                <button class="btn btn-primary btn-sm" ng-click="rate.open()">
-                    <span class="fa fa-check pe-2"></span>Selesai
-                </button>
-            </div>
-        </div>
-    </div>
+<div class="table-responsive">
+    <!-- 
+    'sbu_id'=>'INT',
+        'office_id'=>'INT',
+        'lokasi_id'=>'INT',
+        'user_id'=>'INT',
+        'approval_id'=>'INT',
+        'pic_id'=>'INT',
+        'code_id'=>'INT',
+        'step_id'=>'INT',
+        'aset_id'=>'INT',
+        'submission_id'=>'INT',
+        'action_id'=>'INT',
+        'rate_id'=>'INT DEFAULT 0',
+        'tgl_submit'=>'TIMESTAMP DEFAULT CURRENT_TIMESTAMP',
+        'tgl_approve'=>'DATETIME',
+        'tgl_action'=>'DATETIME',
+        'tgl_selesai'=>'DATETIME',
+        'tgl_rate'=>'DATETIME',
+        'tiket'=>'VARCHAR(24)',
+        'catatan'=>'VARCHAR(256)',
 
-    <div class="mb-3 border-bottom py-2">
-        <div>
-            <div class="fs-5 color-themes">
-                <strong>Pinjam Aset</strong>
-            </div>
-            <div class="row mb-3 small">
-                <div class="col-12">
-                    <span class="fa fa-user text-muted pe-2"></span>Agus Ariyanto
-                </div>
-                <div class="col-6 col-md-3">
-                    <span class="fa fa-calendar-day text-muted pe-2"></span>12/02/2024
-                </div>
-                <div class="col-6 col-md-9">
-                    <span class="fas fa-calendar-week text-muted pe-2"></span>14/02/2024
-                </div>
-                <div class="col-6 col-md-3">
-                    <span class="fa fa-building text-muted pe-1"></span>Jamsostek
-                </div>
-                <div class="col-6 col-md-9">
-                    <span class="fa fa-shapes text-muted pe-1"></span>Aula
-                </div>
-                <div class="col-12">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius doloribus rerum sequi reiciendis minima iure ea, nesciunt aliquid esse officia nostrum temporibus perspiciatis nobis possimus, iusto ipsa facere eveniet officiis!
-                </div>
-            </div>
-            <div>
-                <img src="assets/img/sample/meja-makan.jpg" class="img-tiny pointer me-3 mb-3">
-                <img src="assets/img/sample/pintu.jpg" class="img-tiny pointer me-3 mb-3">
-                <img src="assets/img/sample/pintu-1.jpg" class="img-tiny pointer me-3 mb-3">
-                <img src="assets/img/sample/plafon.jpg" class="img-tiny pointer me-3 mb-3">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6"></div>
-            <div class="col-6 text-end">
-             
-                <button class="btn btn-primary btn-sm" ng-click="rate.open()">
-                    <span class="fa fa-trash pe-2"></span>Selesai
-                </button>
-            </div>
-        </div>
-
-        <div>
-            <div class="fs-5 color-themes">
-                <strong>Overtime AC</strong>
-            </div>
-            <div class="row small mb-3">
-                <div class="col-12">
-                    <span class="fa fa-user text-muted pe-2"></span>Agus Ariyanto
-                </div>
-                <div class="col-6 col-md-3">
-                    <span class="fa fa-calendar-day text-muted pe-2"></span>12/02/2024
-                </div>
-                <div class="col-6 col-md-9">
-                    <span class="fas fa-calendar-week text-muted pe-2"></span>14/02/2024
-                </div>
-                <div class="col-6 col-md-3">
-                    <span class="fa fa-clock text-muted pe-2"></span>17.00                
-                </div>
-                <div class="col-6 col-md-9">
-                    <span class="fas fa-stopwatch text-muted pe-2"></span>21.00
-                </div>
-                <div class="col-6 col-md-3">
-                    <span class="fa fa-building text-muted pe-2"></span>Jamsostek
-                </div>
-                <div class="col-6 col-md-9">
-                    <span class="fa fa-sign text-muted pe-2"></span>Lt.10 Wing Utara
-                </div>
-                <div class="col-12">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius doloribus rerum sequi reiciendis minima iure ea, nesciunt aliquid esse officia nostrum temporibus perspiciatis nobis possimus, iusto ipsa facere eveniet officiis!
-                </div>
-            </div>
-           
-        </div>
-        <div class="row">
-            <div class="col-6"></div>
-            <div class="col-6 text-end">
-                <button class="btn btn-primary btn-sm" ng-click="rate.open()">
-                    <span class="fa fa-trash pe-2"></span>Selesai
-                </button>
-            </div>
-        </div>
-    </div>
-
+     -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Tiket</td>
+                <td>Tanggal</td>
+                <td>Kode</td>
+                <td>User</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </thead>
+    </table>
+</div>      
 </div>
-
 <div alt-component="dialog/rate" data-scope="rate"></div>

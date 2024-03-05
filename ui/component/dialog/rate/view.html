@@ -8,11 +8,11 @@
         <div class="mb-3">
            <label class="form-label">Rating</label>
             <div class="h3">
-                <span class="fa fa-star pe-3 pointer {{bintang>=1?'text-warning':'text-muted'}}" ng-click="bintang=1"></span>
-                <span class="fa fa-star pe-3 pointer {{bintang>=2?'text-warning':'text-muted'}}" ng-click="bintang=2"></span>
-                <span class="fa fa-star pe-3 pointer {{bintang>=3?'text-warning':'text-muted'}}" ng-click="bintang=3"></span>
-                <span class="fa fa-star pe-3 pointer {{bintang>=4?'text-warning':'text-muted'}}" ng-click="bintang=4"></span>
-                <span class="fa fa-star pe-3 pointer {{bintang>=5?'text-warning':'text-muted'}}" ng-click="bintang=5"></span>
+                <span class="fa fa-star pe-3 pointer {{data.star>=1?'text-warning':'text-muted'}}" ng-click="data.star=1"></span>
+                <span class="fa fa-star pe-3 pointer {{data.star>=2?'text-warning':'text-muted'}}" ng-click="data.star=2"></span>
+                <span class="fa fa-star pe-3 pointer {{data.star>=3?'text-warning':'text-muted'}}" ng-click="data.star=3"></span>
+                <span class="fa fa-star pe-3 pointer {{data.star>=4?'text-warning':'text-muted'}}" ng-click="data.star=4"></span>
+                <span class="fa fa-star pe-3 pointer {{data.star>=5?'text-warning':'text-muted'}}" ng-click="data.star=5"></span>
             </div>
         </div>
         <div class="mb-3">
@@ -28,7 +28,7 @@
                 </button>
             </div>
             <div class="col-6 text-end">
-                <button type="submit" class="btn btn-primary btn-sm">
+                <button type="submit" class="btn btn-primary btn-sm" ng-click="submit()">
                     <span class="fa fa-paper-plane pe-3"></span>Submit
                 </button>
             </div>

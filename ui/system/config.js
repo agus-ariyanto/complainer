@@ -1,4 +1,4 @@
-alt.application = 'TemanSapa';
+alt.application = 'tsset';
 alt.title = 'Teman Sapa';
 alt.description = 'Sistem Pelayanan Terpadu Sarana Prasarana';
 alt.version = '0.1';

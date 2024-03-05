@@ -1,3 +1,6 @@
 <div alt-component="nav" data-scope="nav"></div>
-<div class="container" alt-component="home" data-scope="home" ng-show="home.active"></div>
-<div class="container" alt-component="list/monitoring" data-scope="monitoring" ng-show="monitoring.active"></div>
+<div class="container" alt-component="home" data-scope="home" ng-show="nav.tabItem[0].active"></div>
+<div class="container" alt-component="list/monitoring" data-scope="monitoring" ng-show="nav.tabItem[1].active"></div>
+<div class="container" alt-component="list/monitoring" data-scope="history" ng-show="nav.tabItem[2].active"></div>
+<div alt-component="dialog/upload-image" data-scope="upload"></div>
+<div alt-component="dialog/show-image" data-scope="showImg"></div>

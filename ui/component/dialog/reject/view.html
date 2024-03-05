@@ -1,9 +1,5 @@
 <div class="itr-dialog-backdrop {{active?'active':''}}">
     <div class="col-md-6 p-3 m-auto mb-2 bg-white border border-secondary rounded-bottom small-full-width">
-    <!--     <div class="mb-3 text-end">
-            <span class="fa fa-times h5 text-danger pointer" ng-click="close()"></span>
-        </div>
-         -->
          <div class="mb-3">&nbsp;</div>
         <div class="mb-3">
             <label class="form-label">Catatan</label>
@@ -17,7 +13,7 @@
                 </button>
             </div>
             <div class="col-6 text-end">
-                <button type="submit" class="btn btn-danger btn-sm">
+                <button type="button" class="btn btn-danger btn-sm" ng-click="submit()">
                     <span class="fa fa-trash pe-3"></span>Reject
                 </button>
             </div>

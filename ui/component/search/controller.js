@@ -22,7 +22,13 @@ define(['ui/system/helper','ui/system/api'], function(){
             $scope.saved=true;
             $scope.close();
         }
-       
+        $scope.getData=function(url,data){
+            Api.Get(url,data)
+            .then(function(r){
+                $scope.items=r.data;
+            })
+        }
+        
         $scope.close=function(){
             $scope.active=false;
         }

@@ -52,7 +52,7 @@ define(['ui/system/api'], function(){
         }
         $scope.atasanDlg={
             close:function(){
-                if($scope.bidangDlg.saved) {
+                if($scope.atasanDlg.saved) {
                     $scope.data.atasan_id=$scope.atasanDlg.data.id;
                     $scope.data.atasan_nama=$scope.atasanDlg.data.nama;
                 }

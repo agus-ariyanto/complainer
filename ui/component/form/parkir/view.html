@@ -15,7 +15,7 @@
         </div>
         <div class="mb-3">
             <label class="form-label"><span class="fa fa-motorcycle text-muted pe-1"></span>Kendaraan</label>
-            <input class="form-control" list="parkir-idens" placeholder="misal : Motor">
+            <input class="form-control" list="parkir-idens" placeholder="misal : Motor" ng-obyek="data.obyek">
             <datalist id="parkir-idens">
                 <option value="{{i}}" ng-repeat="i in idens">
             </datalist>

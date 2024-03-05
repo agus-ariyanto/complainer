@@ -175,12 +175,16 @@
 .itr-dialog-backdrop.active{
     top:-2px;
 }
-.div-right{
-    
-}
+
 .text-small{
     font-size: 10px;
     line-height: 12px;
+}
+.tab-separator{
+    width:100%;
+    display: block;
+    height: 1px;
+    background-color:#006f6f;
 }
 
 @media (max-width:767px) {
@@ -188,6 +192,20 @@
         padding-left:10px;
     }
 }
+.itr-nav-top-right{
+    width:100%;
+    padding-left:250;
+    padding-right: 10px;
+    text-align: right;
+    margin-top: 10px;
+}
+.itr-nav-top-right.active{
+    padding-left:0;
+}
+.profil-name{
+    display: inline-block;
+}
+
 </style>
 <div class="nav-wrapper" id="nav-wrapper">
     <div class="itr-nav-top {{active?'color-themes':'bg-themes text-white'}}">
@@ -196,44 +214,14 @@
                 <span class="fa fa-bars" ng-click="menuActive(true)"></span>
             </span>
         </div>
-
-            <div class="row mt-3">
-                <div class="col text-end">
-                    <div class="text-small">{{data.nama}}</div>
-                    <div class="text-small">{{data.bidang_nama}}</div>
-                </div>
-                <!-- <div class="col-1 pe-1">
-                    <span class="fa fa-user-circle fs-2"></span>
-                </div>      -->
-            </div>
-        <!-- <div class="row">
-            <div class="col-9">
-                <span class="itr-icon text-uppercase"><span class="fa fa-{{tabSelected.icon}} pe-3"></span>{{tabSelected.title}}</span>
-            </div>
-            <div class="col-3 text-end">
+        <div class="itr-nav-top-right pointer" ng-click="profil()">
+            <div class="profil-name text-end">
                 <div class="text-small">{{data.nama}}</div>
                 <div class="text-small">{{data.bidang_nama}}</div>
             </div>
-        </div> -->
-
-        <!-- <div class="row">
-            <div class="col-8 text-center">
-                <span class="itr-icon text-uppercase"><span class="fa fa-{{tabSelected.icon}} pe-3"></span>{{tabSelected.title}}</span>
-            </div>
-            <div class="col-3 mt-2 text-center overflow-hidden">
-                <div class="small">
-                    {{data.nama}}
-                </div>
-                <div class="small lh-sm">
-                    {{data.bidang_nama}}
-                </div>
-            </div>
-            <div class="col-1 text-end" ng-click="right_active=true">
-                <span class="itr-icon-right">
-                    <span class="fa fa-user-circle"></span>
-                </span>
-            </div>
-        </div> -->
+            <span class="fa fa-user fs-2 pointer" ng-click="profil()"></span>
+        </div>
+  
     </div>
     <div class="itr-nav-left {{active?'active':''}} bg-themes">
         <div class="itr-nav menu">
@@ -248,6 +236,12 @@
         <div class="pt-4">
             <span class="itr-list-item {{i.active?'active':''}}" ng-repeat="i in tabItem" ng-click="toTab(i.id)">
                 <span class="fa fa-{{i.icon}} icon"></span>{{i.title}}
+            </span>
+        </div>
+        <div class="mt-4 tab-separator"></div>
+        <div class="pt-4">
+            <span class="itr-list-item" ng-click="logout()">
+                <span class="fa fa-power-off icon"></span>Logout
             </span>
         </div>
     </div>

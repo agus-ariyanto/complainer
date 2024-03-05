@@ -45,6 +45,7 @@ class Proses extends Ctrl{
     function komplain(){
         $this->setCode(1);
         $this->params->set('step_id',2);
+        $this->params->set('tgl_approval',$this->ymd);
         $this->index();
     }
     function overtime(){
@@ -66,6 +67,16 @@ class Proses extends Ctrl{
     function idcard(){
         $this->setCode(6);
         $this->index();
+    }
+    function rate(){
+        $proses_id=$this->params->key('proses_id');
+        $res=$this->db->insert('rate',$this->params);
+        $this->params->clear();
+        $this->params->set('tgl_rate',$this->ymd);
+        $this->params->set('rate_id',$res['id']);
+        $this->params->set('step_id',10);
+        $data=$this->db->update($this->model,$this->params,$proses_id);
+        $this->data($data);
     }
 
     function insert(){

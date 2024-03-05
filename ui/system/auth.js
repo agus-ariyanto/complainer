@@ -1,9 +1,8 @@
 alt.modules.auth = angular.module('alt-auth', [])
     .factory('$auth',['$log', function($log){
         // mengambil data token yang disimpan di lokal
-        store.set(alt.application + '_token', store.get(alt.application + '_token') || 0);
-        store.set(alt.application + '_user', store.get(alt.application + '_user') || {});
-        store.set(alt.application + '_init', store.get(alt.application + '_init') || 0);
+        store.set(alt.application + 'a', store.get(alt.application + 'a') || 0);
+        store.set(alt.application + 'b', store.get(alt.application + 'b') || 0);
 
         // nilai default token 0 bila belum login
         return {
@@ -12,12 +11,16 @@ alt.modules.auth = angular.module('alt-auth', [])
             user:{},
             setToken: function(token){
                 this.token = token;
-                store.set(alt.application + '_token', this.token);
+                store.set(alt.application + 'b', this.token);
             },
-
             setUser: function(data){
                 this.user = data;
-                store.set(alt.application + '_user', this.user);
+                var a=btoa(JSON.stringify(data));
+                store.set(alt.application + 'a', a);
+            },
+            getUser: function(){
+                var a=JSON.parse(atob(store.get(alt.application + 'a')));
+                this.user=a;
             },
 
             login: function(data){
@@ -25,24 +28,15 @@ alt.modules.auth = angular.module('alt-auth', [])
             },
             logout: function(){
                 this.token = 0;
-                store.set(alt.application + '_token', this.token);
-                this.setUser({});
+                store.set(alt.application + 'a', 0);
+                store.set(alt.application + 'b', 0);
             },
             islogin: function(){
                 return this.token != 0;
             },
             userlevel:function(group_id){
-                // console.log(group_id);
-                // console.log(this.user.grup_id);
                 if(this.user.grup_id!= group_id)
-                    return window.location.href=alt.baseUrl+alt.loginRoute;
-            },
-            setInit:function(value){
-                this.init=value;
-                store.set(alt.application + '_init', value);
-            },
-            hasinit:function(){
-                return this.init!=0;
+                return window.location.href=alt.baseUrl+alt.loginRoute;
             }
         };
     }])
@@ -60,11 +54,10 @@ alt.modules.auth = angular.module('alt-auth', [])
         $httpProvider.interceptors.reverse();
     }])
     .run(['$auth', function($auth){
-        var token = store.get(alt.application + '_token');
+        var token = store.get(alt.application + 'b');
         if(token) {
             $auth.login(token);
-            $auth.setUser(store.get(alt.application + '_user'));
-            $auth.setInit(store.get(alt.application + '_init'));
+            $auth.getUser();
         }
     }]);
 

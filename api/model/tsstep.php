@@ -11,7 +11,7 @@ class TsStep extends Model{
         ),
         array(
             'id'=>2,
-            'nama'=>'Dalam proses',
+            'nama'=>'Telah disetujui, masih dalam proses',
         ),
         array(
             'id'=>3,
@@ -19,7 +19,7 @@ class TsStep extends Model{
         ),
         array(
             'id'=>4,
-            'nama'=>'Telah dikonfirmasi',
+            'nama'=>'Tindakan telah diselesaikan',
         ),
         array(
             'id'=>10,

@@ -1,5 +1,35 @@
 <div class="main-content content-home">
-    <div class="mb-3">
+    <div class="mb-5 d-flex flex-row bd-highlight mb-3">
+        <div class="p-2 ms-5 bg-satu bg-hover-shadow home-button pointer" ng-click="komplain.open()">
+            <img src="assets/img/komplain.png" class="img-full-width">
+            <div class="text-center"><strong>Komplain</strong> </div>
+        </div>
+        <div class="p-2 ms-5 bg-dua bg-hover-shadow home-button pointer" ng-click="overtime.open()">
+            <img src="assets/img/overtime.png" class="img-full-width">
+            <div class="text-center"><strong>Overtime AC</strong></div>
+        </div>
+        <div class="p-2 ms-5 bg-tiga bg-hover-shadow home-button pointer" ng-click="pinjam.open()">
+            <img src="assets/img/pinjam.png" class="img-full-width">
+            <div class="text-center"><strong>Pinjam Aset</strong></div>
+        </div>
+    </div>
+    <div class="d-flex flex-row bd-highlight mb-3">
+        <div class="p-2 ms-5 bg-empat bg-hover-shadow home-button pointer" ng-click="idcard.open()">
+            <img src="assets/img/idcard.png" class="img-full-width">
+            <div class="text-center"><strong>Kartu ID</strong></div>
+        </div>
+        <div class="p-2 ms-5 bg-lima bg-hover-shadow home-button pointer" ng-click="parkir.open()">
+            <img src="assets/img/parkir.png" class="img-full-width">
+            <div class="text-center"><strong>Kartu Parkir</strong></div>
+        </div>
+        <div class="p-2 ms-5 bg-enam bg-hover-shadow home-button pointer" ng-click="akses.open()">
+            <img src="assets/img/akses.png" class="img-full-width">
+            <div class="text-center"><strong>Kartu Akses</strong></div>
+        </div>
+    </div>
+      
+    <!-- <div class="mb-3"> -->
+<!--         
         <div class="button-home mb-3 me-3" ng-click="komplain.open()">
             <span class="fa fa-{{komplain.icon}} icon-home"></span>
             <small>{{komplain.title}}</small>
@@ -25,8 +55,8 @@
         <div class="button-home mb-3 me-3" ng-click="akses.open()">
             <span class="fa fa-{{akses.icon}} icon-home-card"></span>
             <small>{{akses.title}}</small>
-        </div>
-     </div>   
+        </div> -->
+     <!-- </div>    -->
 </div>
 
 <div alt-component="form/komplain" data-scope="komplain"></div>
@@ -36,5 +66,3 @@
 <div alt-component="form/idcard" data-scope="idcard"></div>
 <div alt-component="form/parkir" data-scope="parkir"></div>
 <div alt-component="form/akses" data-scope="akses"></div>
-<div alt-component="dialog/upload-image" data-scope="upload"></div>
-<div alt-component="dialog/show-image" data-scope="showImg"></div>

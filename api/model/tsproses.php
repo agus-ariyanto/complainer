@@ -27,4 +27,5 @@ class TsProses extends Model{
         'tiket'=>'VARCHAR(24)',
         'catatan'=>'VARCHAR(256)',
     );
+    public $join='sbu,office,lokasi,user,approval,pic,code,step,aset,submission,action,rate';
 }
