@@ -15,13 +15,19 @@ define(['ui/system/api'], function(){
                 }
             }
         }
+        $scope.showImg={
 
+        }
         $scope.nav={
             disable:false,
             tabItem:[
                 
-                {id:0,icon:'user-check',title:'Approval',active:true, init:function(){}},
-                {id:1,icon:'bell',title:'Monitoring',active:false, init:function(){}},
+                {id:0,icon:'user-check',title:'Approval',active:true, init:function(){
+                    $scope.approval.init();
+                }},
+                {id:1,icon:'bell',title:'Monitoring',active:false, init:function(){
+                    $scope.monitoring.init();
+                }},
                 {id:2,icon:'th-list',title:'Report',active:false, init:function(){}},
             ],
             rightItem:[
@@ -33,6 +39,7 @@ define(['ui/system/api'], function(){
                 }},
             ],
             interval:function(){
+                
 /* 
                tiap 5 detik ( lihat /component/nav)
                 $loading.silent=true;
@@ -44,6 +51,9 @@ define(['ui/system/api'], function(){
  */                
             }
         }
+        setTimeout(function(){
+            $scope.approval.init();
+        },1000);
         $scope.nav.tabSelected=$scope.nav.tabItem[0];
         $scope.showImg={}
  

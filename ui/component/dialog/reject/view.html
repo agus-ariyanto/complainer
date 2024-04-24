@@ -3,7 +3,8 @@
          <div class="mb-3">&nbsp;</div>
         <div class="mb-3">
             <label class="form-label">Catatan</label>
-            <textarea class="form-control" rows="2" ng-model="data.catatan"></textarea>
+            <textarea class="form-control" rows="2" ng-model="data.rejectlog" maxlength="200"></textarea>
+            <div class="small text-muted text-end">&nbsp;{{data.rejectlog_length}}</div>
         </div>
         <div class="separator-50"></div>
         <div class="row">
@@ -14,7 +15,7 @@
             </div>
             <div class="col-6 text-end">
                 <button type="button" class="btn btn-danger btn-sm" ng-click="submit()">
-                    <span class="fa fa-trash pe-3"></span>Reject
+                    <span class="fa fa-trash-alt pe-3"></span>Reject
                 </button>
             </div>
         </div>     

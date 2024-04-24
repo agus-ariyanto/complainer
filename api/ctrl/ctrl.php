@@ -123,7 +123,7 @@ class Ctrl extends Base{
     function test(){
         $this->data($this->params->all());
     }
-    
+  
     protected function insertLog($qry){
         global $prefix;
         // log update
@@ -132,5 +132,26 @@ class Ctrl extends Base{
         $this->dblogs->colVal('tbid',$this->model_id);
         $this->dblogs->colVal('qry',$qry);
         $this->dblogs->save();
-    }    
+    }
+    protected function checkID(){
+        if(empty($this->model_id)){ 
+            $this->data(array(
+                'error'=>1,
+                'ermesg'=>'Id Kosong',
+            ));
+            return false;
+        }
+        return true;
+    }  
+    protected function checkPostParam($key){
+        if(empty($this->params->key($key))){
+            $this->data(array(
+                'error'=>1,
+                'ermesg'=>'Data tidak lengkap'
+            ));
+            return false;
+        } 
+        return true;
+    }  
+    
 }

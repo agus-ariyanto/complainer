@@ -1,20 +1,22 @@
 <div alt-component="dialog/rate" data-scope="rate"></div>
 <div class="main-content content-home">
     <div class="row">
-        <div class="col-12 col-md-6 border-bottom py-3" ng-repeat="i in items">
+        <div class="col-12 col-md-6 border-bottom py-3 {{$index%2==1?'bg-light':''}}" ng-repeat="i in items track by $index">
             
             <div class="fs-5 text-themes text-uppercase">
                  <strong>{{i.code_nama}} - {{i.tiket}}</strong>
             </div>
-            <div class="small" ng-if="i.step_id>=10">
+            <div class="small" ng-if="i.step_id==10">
                 <span class="fa fa-star {{i.rate_star>=1?'text-warning':'text-muted'}}"></span>  
                 <span class="fa fa-star {{i.rate_star>=2?'text-warning':'text-muted'}}"></span>  
                 <span class="fa fa-star {{i.rate_star>=3?'text-warning':'text-muted'}}"></span>  
                 <span class="fa fa-star {{i.rate_star>=4?'text-warning':'text-muted'}}"></span>  
                 <span class="fa fa-star {{i.rate_star>=5?'text-warning':'text-muted'}}"></span>  
             </div>
-            <div class="mb-3">
-                {{i.step_nama}}
+            <div class="mb-3" >
+                <small class="py-1 px-3 {{(i.step_id<10?'bg-themes':(i.step_id>10?'bg-danger':'bg-success'))}} text-white rounded-pill">
+                    {{i.step_nama}} 
+                </small>
             </div>
             <div class="small ps-3">
 
@@ -58,12 +60,22 @@
                 <div class="text-muted pt-2">
                     <span class="fa fa-user text-muted pe-2"></span>{{i.user_nama}} - {{helper.toFormat(i.tgl_submit)}}
                 </div> 
-                <div class="text-muted">
+                <div class="text-muted mb-3">
                     <span class="fa fa-user-check text-muted pe-2"></span>{{i.approval_nama}} - {{helper.toFormat(i.tgl_approve)}}
                 </div> 
+                <div class="row mb-3" ng-if="i.action_tindakan">
+                    <div class="col border rounded-pill">
+                        <strong>
+                            {{i.action_tindakan}}
+                        </strong>
+                    </div>
+                    <div class="col">
+                        <span class="fa fa-comment pe-2"></span>{{i.action_catatan}}
+                    </div>
+                </div>
             </div>
             
-            <div class="text-end" ng-if="i.step_id==4">
+            <div class="text-end" ng-if="i.step_id==4 && grup_id==4">
                 <button class="btn btn-primary btn-sm" ng-click="rate.open(i)">
                     <span class="fa fa-handshake pe-2"></span>Konfirmasi Selesai
                 </button> 

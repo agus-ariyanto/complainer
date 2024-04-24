@@ -59,7 +59,7 @@ define(['ui/system/api'], function(){
                 $scope.atasanDlg.active=false;
             },
             init:function(){
-               $scope.atasanDlg.getData('user',{grup_id:{equal:2},order:'nama ASC'});
+               $scope.atasanDlg.getData('user/search',{grup_id:{equal:2},order:'nama ASC'});
             }
         }
         $scope.$watch('data.nama',function(e){

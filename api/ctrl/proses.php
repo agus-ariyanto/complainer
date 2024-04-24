@@ -44,6 +44,7 @@ class Proses extends Ctrl{
     
     function komplain(){
         $this->setCode(1);
+        $this->userdata['atasan_id']=0;
         $this->params->set('step_id',2);
         $this->params->set('tgl_approval',$this->ymd);
         $this->index();
@@ -54,14 +55,15 @@ class Proses extends Ctrl{
     }
     function pinjam(){
         $this->setCode(3);
-        $this->index();
-    }
-    function akses(){
-        $this->setCode(5);
+        $this->params->set('pic_id',0);
         $this->index();
     }
     function parkir(){
         $this->setCode(4);
+        $this->index();
+    }
+    function akses(){
+        $this->setCode(5);
         $this->index();
     }
     function idcard(){
@@ -69,7 +71,8 @@ class Proses extends Ctrl{
         $this->index();
     }
     function rate(){
-        $proses_id=$this->params->key('proses_id');
+        $this->model_id=$this->params->key('id');
+        $this->params->del('id');
         $res=$this->db->insert('rate',$this->params);
         $this->params->clear();
         $this->params->set('tgl_rate',$this->ymd);
@@ -93,7 +96,7 @@ class Proses extends Ctrl{
         /* ticket numerator */
         $cf=new CmFuncts;
         $this->params->set('tiket',$cf->createTicket($this->params->key('code_id')));
-        
+        $this->params->set('pic_id',0);
         $this->params->set('user_id',$this->userdata['id']);
         $this->params->set('approval_id',$this->userdata['atasan_id']);
         
@@ -104,6 +107,46 @@ class Proses extends Ctrl{
         $this->data($this->db->id($this->model,$res['id']));
     }
 
+    function approve(){
+        $this->params->set('step_id',2);
+        $this->model_id=$this->params->key('id');
+        $this->params->del('id');
+        $this->params->set('tgl_approve',$this->ymd);
+        $this->db->update($this->model,$this->params,$this->model_id);
+        $this->data($this->db->id($this->model,$this->model_id));    
+    }
+    function reject(){
+        if(empty($this->params->key('grup_id'))) 
+            $this->params->set('grup_id',$this->userdata['grup_id']); 
+        $this->model_id=$this->params->key('id');
+        $this->params->del('id');
+        $s=12;
+        if($this->params->key('grup_id')<=2) $s=11;
+        $this->params->set('step_id',$s);
+        $this->db->update($this->model,$this->params,$this->model_id);
+        $this->data($this->db->id($this->model,$this->model_id));    
+    }
+    function follup(){
+        $this->model_id=$this->params->key('id');
+        $this->params->del('id');
+        $this->params->set('step_id',3);
+        $this->params->set('tgl_action',$this->ymd);
+        $this->params->set('pic_id',$this->userdata['id']);
+        $this->db->update($this->model,$this->params,$this->model_id);
+        $this->data($this->db->id($this->model,$this->model_id));    
+    }
+    function action(){
+        $this->model_id=$this->params->key('id');
+        $this->params->del('id');
+        $this->params->set('proses_id',$this->model_id);
+        $res=$this->db->insert('action',$this->params);
+        $this->params->set('step_id',4);
+        $this->params->set('action_id',$res['id']);
+        $this->params->set('tgl_selesai',$this->ymd);
+        $this->params->set('pic_id',$this->userdata['id']);
+        $this->db->update($this->model,$this->params,$this->model_id);
+        $this->data($this->db->id($this->model,$this->model_id));    
+    }
 
 
 }

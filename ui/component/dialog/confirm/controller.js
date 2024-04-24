@@ -2,7 +2,6 @@ define(['ui/system/helper','ui/system/api'], function(){
     return ['$scope','Helper','Api', function($scope,Helper,Api){
 
         $scope.active=false;
-        $scope.tnlist=['Ganti Sparepart','Ganti Baru','Service'];
         $scope.data={}
         $scope.submit=function(){
             Api.Post('proses/action',$scope.data)
@@ -13,7 +12,8 @@ define(['ui/system/helper','ui/system/api'], function(){
         }
         $scope.open=function(val){
             $scope.data={
-                id:val.id
+                id:val.id,
+                tindakan:val.tindakan
             }
             $scope.saved=false;
             $scope.active=true;

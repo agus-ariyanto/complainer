@@ -26,6 +26,7 @@ class TsProses extends Model{
         'tgl_rate'=>'DATETIME',
         'tiket'=>'VARCHAR(24)',
         'catatan'=>'VARCHAR(256)',
+        'rejectlog'=>'VARCHAR(256)',
     );
     public $join='sbu,office,lokasi,user,approval,pic,code,step,aset,submission,action,rate';
 }

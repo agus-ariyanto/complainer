@@ -1,13 +1,17 @@
 <div alt-component="dialog/reject" data-scope="reject"></div>
+<div alt-component="dialog/action" data-scope="action"></div>
+<div alt-component="dialog/confirm" data-scope="confirm"></div>
 <div class="main-content content-home">
     <div class="row">
-        <div class="col-12 col-md-6 border-bottom py-3" ng-repeat="i in items">
+        <div class="col-12 col-md-6 border-bottom py-3 {{$index%2==1?'bg-light':''}}" ng-repeat="i in items track by $index">
             
             <div class="fs-5 text-themes text-uppercase">
                  <strong>{{i.code_nama}} - {{i.tiket}}</strong>
             </div>
             <div class="mb-3">
-                {{i.step_nama}}
+                <small class="py-1 px-3 {{(i.step_id<10?'bg-themes':(i.step_id>10?'bg-danger':'bg-success'))}} text-white rounded-pill">
+                    {{i.step_nama}} 
+                </small>
             </div>
             <div class="small ps-3">
 
@@ -51,13 +55,13 @@
                 <div class="text-muted pt-2">
                     <span class="fa fa-user text-muted pe-2"></span>{{i.user_nama}} - {{helper.toFormat(i.tgl_submit)}}
                 </div> 
-                <div class="text-muted">
+                <div class="text-muted" ng-if="i.approval_id!=0">
                     <span class="fa fa-user-check text-muted pe-2"></span>{{i.approval_nama}} - {{helper.toFormat(i.tgl_approve)}}
                 </div> 
             </div>
             
             <div class="text-end" ng-if="i.step_id==1">
-                <button class="btn btn-primary btn-sm" ng-click="reject.open(i)">
+                <button class="btn btn-danger btn-sm" ng-click="reject.open(i)">
                     <span class="fa fa-trash-alt pe-2"></span>Reject
                 </button> 
                 <button class="btn btn-primary btn-sm" ng-click="approve(i)">
@@ -65,15 +69,15 @@
                 </button> 
             </div>
             <div class="text-end" ng-if="i.step_id==2">
-                <button class="btn btn-primary btn-sm" ng-click="reject.open(i)">
+                <button class="btn btn-danger btn-sm" ng-click="reject.open(i)">
                     <span class="fa fa-trash-alt pe-2"></span>Reject
                 </button> 
-                <button class="btn btn-primary btn-sm" ng-click="tindaklanjut(i)">
+                <button class="btn btn-primary btn-sm" ng-click="follup(i)">
                     <span class="fa fa-handshake pe-2"></span>Tindak Lanjut
                 </button> 
             </div>
             <div class="text-end" ng-if="i.step_id==3">
-                <button class="btn btn-primary btn-sm" ng-click="selesai(i)">
+                <button class="btn btn-success btn-sm" ng-click="actdone(i)">
                     <span class="fa fa-handshake pe-2"></span>Selesai
                 </button> 
             </div>

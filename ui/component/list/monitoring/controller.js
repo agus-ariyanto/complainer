@@ -3,6 +3,7 @@ define(['ui/system/api','ui/system/helper'], function(){
         $scope.helper=Helper;
         $scope.items=[];
         $scope.showImg={}
+        $scope.grup_id=$auth.user.grup_id;
         $scope.rate={
             close:function(){
                 $scope.rate.active=false;
@@ -22,19 +23,19 @@ define(['ui/system/api','ui/system/helper'], function(){
          $scope.init=function(){
              var w={
                  user_id:{equal:$auth.user.id},
-                 step_id:{lte:4},
+                 step_id:{lt:10},
                  and:1
                 }
-             if($auth.user.grup_id<2) 
+             if($auth.user.grup_id<=2) 
                 w={
                     approval_id:{equal:$auth.user.id},
-                    step_id:{lte:4},
+                    step_id:{bw:'2+9'},
                     and:1
                 }
              if($auth.user.grup_id==3) 
                 w={
                     pic_id:{equal:$auth.user.id},
-                    step_id:{lte:4},
+                    step_id:{bw:'4+9'},
                     and:1
                 }
               Api.Get('proses',w)

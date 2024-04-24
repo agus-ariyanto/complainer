@@ -17,7 +17,7 @@ define(['ui/system/api','ui/system/helper'], function(){
             $scope.data={
                 star:0,
                 ulasan:'',
-                proses_id:val.id
+                id:val.id
             }
             $scope.saved=false;
             $scope.active=true;
@@ -35,8 +35,7 @@ define(['ui/system/api','ui/system/helper'], function(){
         }
         $scope.$watch('data.ulasan', function(e){
             $scope.data.ulasan_length='';
-            if(e.length>0) 
-                $scope.data.ulasan_length=(120-e.length)+' Karakter tersisa';
+            if(e) $scope.data.ulasan_length=(120-e.length)+' Karakter tersisa';
         });
 
 
